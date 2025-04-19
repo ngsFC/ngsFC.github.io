@@ -1,35 +1,43 @@
 <!--
 Instructions:
-1. Create a new GitHub repository named `francescocecere.github.io` and enable GitHub Pages.
-2. Copy this file as `index.html` at the root of your repo (or in `docs/`).
-3. Add assets: `assets/css/style.css` and `assets/images/` for any images.
-4. Commit, push, and enable Pages in Settings.
+1. Create a GitHub repo `francescocecere.github.io` and enable Pages.
+2. Place this `index.html` at root (or in `docs/`).
+3. Add `assets/css/style.css` and `assets/images/`.
+4. Commit, push, and enable Pages under Settings.
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Francesco Cecere | CV & Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Francesco Cecere | Bioinformatician</title>
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootswatch Flatly Theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/flatly/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+    section { padding: 60px 0; }
+    .navbar-brand { font-weight: 600; }
+    .section-title { position: relative; margin-bottom: 1.5rem; }
+    .section-title::after { content: ''; position: absolute; width: 60px; height: 3px; background: #327c88; bottom: -10px; left: 0; }
+  </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#home">Francesco Cecere</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
           <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
-          <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
           <li class="nav-item"><a class="nav-link" href="#memberships">Memberships</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
@@ -38,168 +46,114 @@ Instructions:
   </nav>
 
   <!-- Hero -->
-  <section id="home" class="vh-100 d-flex align-items-center bg-light" style="padding-top:80px;">
+  <section id="home" class="bg-light text-dark d-flex align-items-center" style="min-height:100vh; padding-top:80px;">
     <div class="container text-center">
-      <h1 class="display-4">Francesco Cecere</h1>
+      <h1 class="display-3 fw-bold">Francesco Cecere</h1>
       <p class="lead">Biologist & Bioinformatician</p>
-      <p>Born: 22/09/1995 | Nationality: Italian</p>
-      <p>Phone: (+39) 3888903265 | Email: <a href="mailto:francesco.cecerengs@gmail.com">francesco.cecerengs@gmail.com</a></p>
+      <p>Born: 22/09/1995 • Italian</p>
       <p>
-        <a href="https://linkedin.com/in/francesco-cecere-5b5778199" target="_blank">LinkedIn</a> |
-        <a href="https://x.com/FcecereNGS" target="_blank">Twitter</a> |
-        <a href="https://www.researchgate.net/profile/Francesco-Cecere-2" target="_blank">ResearchGate</a> |
-        <a href="https://github.com/ngsFC" target="_blank">GitHub</a>
+        <a href="mailto:francesco.cecerengs@gmail.com" class="text-decoration-none">francesco.cecerengs@gmail.com</a> •
+        <a href="tel:+393888903265" class="text-decoration-none">+39 3888903265</a>
       </p>
+      <div class="mt-3">
+        <a href="https://linkedin.com/in/francesco-cecere-5b5778199" class="btn btn-outline-primary btn-sm mx-1" target="_blank">LinkedIn</a>
+        <a href="https://x.com/FcecereNGS" class="btn btn-outline-primary btn-sm mx-1" target="_blank">X (Twitter)</a>
+        <a href="https://github.com/ngsFC" class="btn btn-outline-primary btn-sm mx-1" target="_blank">GitHub</a>
+      </div>
     </div>
   </section>
 
   <!-- About -->
-  <section id="about" class="py-5">
+  <section id="about">
     <div class="container">
-      <h2>About Me</h2>
-      <p>I am Francesco Cecere, a Biologist with a deep-rooted interest in Genomics and Bioinformatics. My research primarily focuses on gene regulatory networks, where I leverage advanced bioinformatics techniques to analyze genomics data. This blend of biology and informatics is not just my profession, but my passion. I am dedicated to scientific innovation, particularly in bioinformatics, to advance health and science.</p>
+      <h2 class="section-title">About Me</h2>
+      <p>I am a biologist specializing in genomics and bioinformatics. My passion centers on reconstructing gene regulatory networks using single-cell transcriptomics and epigenomic data, striving to advance health and scientific innovation.</p>
     </div>
   </section>
 
   <!-- Experience -->
-  <section id="experience" class="py-5 bg-light">
+  <section id="experience" class="bg-light">
     <div class="container">
-      <h2>Work Experience</h2>
-      <div class="mb-4">
-        <h5>Researcher III level, Institute of Genetics and Biophysics "Adriano Buzzati-Traverso" (IGB) - CNR</h5>
-        <small class="text-muted">Aug 26, 2024 – Present | Napoli, Italy</small>
-        <p><strong>Project:</strong> National Centre for HPC, Big Data and Quantum Computing</p>
-        <p><strong>Title:</strong> Development and testing of algorithms for the reconstruction of gene regulatory networks from single-cell transcriptomic data.<br>Bando n. 400.5 IGB PNRR prot. 401541 del 15/12/2023</p>
-      </div>
-      <div class="mb-4">
-        <h5>Visiting Postdoc, Josep Carreras Leukaemia Research Institute</h5>
-        <small class="text-muted">May 2023 – Jul 2023 | Badalona, Spain</small>
-        <p>Worked with Dr. Esteller’s group integrating clinical, genetic, and epigenetic data from Wilms tumor patients to improve diagnosis and stratification. Data analysis: EPIC methylation array, RNA-seq, Exome-seq.</p>
-      </div>
-      <div class="mb-4">
-        <h5>Postdoc Researcher, University of Campania "Luigi Vanvitelli"</h5>
-        <small class="text-muted">Feb 2023 – Aug 2024 | Caserta, Italy</small>
-        <p>Study of methylation and gene expression profiles of imprinted genes and the whole genome in Wilms tumor (SSD: BIO/18). Data analysis: EPIC methylation array, RNA-seq, Exome-seq.</p>
-      </div>
-      <div class="mb-4">
-        <h5>Visiting Student, Babraham Institute</h5>
-        <small class="text-muted">Jul 2022 | Cambridge, UK</small>
-        <p>Collaborated on BS-seq and single-cell RNA-seq analysis of germ cells with Drs. Kelsey and Andrews.</p>
+      <h2 class="section-title">Work Experience</h2>
+      <div class="timeline">
+        <div class="mb-5">
+          <h5 class="fw-semibold">Researcher III, IGB-CNR</h5>
+          <span class="text-muted">Aug 2024 – Present | Napoli, Italy</span>
+          <p>Developing algorithms for reconstructing gene regulatory networks from single-cell RNA-seq in the HPC, Big Data & Quantum Computing center.</p>
+        </div>
+        <div class="mb-5">
+          <h5 class="fw-semibold">Visiting Postdoc, Josep Carreras Leukaemia Research Institute</h5>
+          <span class="text-muted">May 2023 – Jul 2023 | Badalona, Spain</span>
+          <p>Integrated clinical, genetic, and epigenetic data for Wilms tumor stratification. Tools: EPIC methylation arrays, RNA-seq, Exome-seq.</p>
+        </div>
+        <div class="mb-5">
+          <h5 class="fw-semibold">Postdoc, University of Campania “Luigi Vanvitelli”</h5>
+          <span class="text-muted">Feb 2023 – Aug 2024 | Caserta, Italy</span>
+          <p>Profiled methylation & expression of imprinted genes in Wilms tumor using multi-omics data (EPIC, RNA-seq, Exome-seq).</p>
+        </div>
+        <div>
+          <h5 class="fw-semibold">Visiting Student, Babraham Institute</h5>
+          <span class="text-muted">Jul 2022 | Cambridge, UK</span>
+          <p>Analyzed BS-seq & scRNA-seq of germ cells with Dr. Kelsey & Andrews.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Education -->
-  <section id="education" class="py-5">
+  <section id="education">
     <div class="container">
-      <h2>Education</h2>
-      <div class="mb-3">
-        <h5>PhD in Molecular Life Sciences, University of Campania "Luigi Vanvitelli"</h5>
-        <small class="text-muted">Nov 2019 – Jan 2023 | Caserta, Italy</small>
-        <p>Research on imprinting disorders (BWS, SRS) using RNA-seq, Exome-seq, RRBS, BS-seq, ChIP-seq.</p>
-      </div>
-      <div class="mb-3">
-        <h5>Master's in Molecular Biology, University of Campania "Luigi Vanvitelli"</h5>
-        <small class="text-muted">2017 – 2019 | Caserta, Italy</small>
-        <p>Thesis: Identification of novel transcription factors binding imprinting control regions. Grade: 110/110 cum laude.</p>
-      </div>
-      <div class="mb-3">
-        <h5>Bachelor's in Biological Sciences, University of Campania "Luigi Vanvitelli"</h5>
-        <small class="text-muted">2013 – 2016 | Caserta, Italy</small>
-        <p>Thesis: Neuropathological effects of alcohol abuse associated with thiamine deficiency. Grade: 110/110 cum laude.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Publications -->
-  <section id="publications" class="py-5 bg-light">
-    <div class="container">
-      <h2>Selected Publications</h2>
-      <ul>
-        <li>Giaccari C., Cecere F., Argenziano L., Pagano A., Riccio A. (2024). <em>New insights into oocyte cytoplasmic lattice-associated proteins.</em> Trends in Genetics. https://doi.org/10.1016/j.tig.2024.06.002</li>
-        <li>Lullo V., Cecere F., ... Strazzullo M. (2024). <em>A novel iPSC-based model of ICF syndrome subtype 2 recapitulates the molecular phenotype of ZBTB24 deficiency.</em> Frontiers in Immunology, 15, 1419748.</li>
-        <li>Cillo F., Coppola E., Habetswallner F., Cecere F., ... Giardino G. (2024). <em>Understanding the Variability of 22q11.2 Deletion Syndrome: The Role of Epigenetic Factors.</em> Genes, 15(3), 321.</li>
-        <li>Giaccari C., Cecere F., ... Riccio A. (2024). <em>A maternal-effect Padi6 variant causes ...</em> Genes & Development, 38(3-4), 131–150.</li>
-        <li>Verma A., Krishnan V.P., Cecere F., ... Riccio A. (2023). <em>ICF1-Syndrome-Associated DNMT3B Mutations Prevent De Novo Methylation...</em> Biomolecules, 13(12), 1717.</li>
-        <li>Pignata L., Cecere F., ... Riccio A. (2023). <em>Co-occurrence of Beckwith-Wiedemann syndrome and pseudohypoparathyroidism type 1B...</em> Frontiers in Cell and Developmental Biology, 11, 1237629.</li>
-        <li>Cecere F., Pignata L., ... Riccio A. (2023). <em>Co-Occurrence of Beckwith-Wiedemann Syndrome and Early-Onset Colorectal Cancer.</em> Cancers, 15(7), 1944.</li>
-        <!-- Add remaining publications similarly -->
+      <h2 class="section-title">Education</h2>
+      <ul class="list-unstyled">
+        <li class="mb-4"><strong>PhD in Molecular Life Sciences</strong>, University of Campania “Luigi Vanvitelli” (Nov 2019 – Jan 2023) — Focus: imprinting disorders (BWS, SRS) via RNA-seq, RRBS, BS-seq, ChIP-seq.</li>
+        <li class="mb-4"><strong>MSc in Molecular Biology</strong>, University of Campania “Luigi Vanvitelli” (2017 – 2019) — Thesis: transcription factors in imprinting control regions. 110/110 cum laude.</li>
+        <li><strong>BSc in Biological Sciences</strong>, University of Campania “Luigi Vanvitelli” (2013 – 2016) — Thesis: neuropathological effects of alcohol-induced thiamine deficiency. 110/110 cum laude.</li>
       </ul>
     </div>
   </section>
 
-  <!-- Courses -->
-  <section id="courses" class="py-5">
+  <!-- Publications -->
+  <section id="publications" class="bg-light">
     <div class="container">
-      <h2>Professional Courses</h2>
+      <h2 class="section-title">Publications</h2>
       <ul>
-        <li>Sep 2023: scRNA-seq hands-on course, Università degli Studi di Torino.</li>
-        <li>Dec 2021: 10x single cell RNA Seq Analysis, Babraham Institute.</li>
-        <li>Sep 2021: Data Science: Machine Learning in Cancer Genomics, ISAGS.</li>
-        <li>Mar 2021: NGS Data Analysis in Diagnostics, Università di Pavia.</li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/38955588/" target="_blank">Giaccari C., Cecere F., Argenziano L., Pagano A., Riccio A. New insights into oocyte cytoplasmic lattice-associated proteins. Trends Genet. 2024.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39040103/" target="_blank">Lullo V., Cecere F., et al. A novel iPSC-based model of ICF syndrome subtype 2 … Front Immunol. 2024.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/38540380/" target="_blank">Cillo F., Coppola E., Habetswallner F., Cecere F., et al. Understanding the Variability of 22q11.2 Deletion Syndrome … Genes. 2024.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/38453481/" target="_blank">Giaccari C., Cecere F., et al. A maternal-effect Padi6 variant causes nuclear & cytoplasmic abnormalities in oocytes … Genes Dev. 2024.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/38136588/" target="_blank">Verma A., Krishnan V.P., Cecere F., et al. ICF1-Syndrome-Associated DNMT3B Mutations Prevent De Novo Methylation … Biomolecules. 2023.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/37635873/" target="_blank">Pignata L., Cecere F., et al. Co-occurrence of Beckwith-Wiedemann syndrome & pseudohypoparathyroidism type 1B … Front Cell Dev Biol. 2023.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/37046605/" target="_blank">Cecere F., Pignata L., et al. Co-Occurrence of Beckwith-Wiedemann Syndrome & Early-Onset Colorectal Cancer. Cancers. 2023.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35643636/" target="_blank">Pignata L., Cecere F.*, et al. Novel genetic variants of KHDC3L & subcortical maternal complex … Clin Epigenetics. 2022.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/36292759/" target="_blank">Passaretti F., Pignata L., Vitiello G., Cecere F., et al. Different Mechanisms Cause Hypomethylation … Genes. 2022.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35918739/" target="_blank">Acurzio B.*, Cecere F.*, et al. Mismatch-repair proteins MSH2 & MSH6 interact … Epigenetics Chromatin. 2022.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/34132339/" target="_blank">Freschi A., Del Prete R., Pignata L., Cecere F., et al. CTCF binding sites correlate with methylation & imprinting. Hum Mol Genet. 2021.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/34226608/" target="_blank">Acurzio B., Verma A., Polito A., Cecere F., et al. Zfp57 inactivation & imprinted gene expression in ESCs. Sci Rep. 2021.</a></li>
+        <li><a href="https://pubmed.ncbi.nlm.nih.gov/33301849/" target="_blank">Russo R., Russo V., Cecere F., et al. ZBTB2 protein is a new partner of the NuRD complex. Int J Biol Macromol. 2021.</a></li>
       </ul>
     </div>
   </section>
 
   <!-- Memberships -->
-  <section id="memberships" class="py-5 bg-light">
+  <section id="memberships">
     <div class="container">
-      <h2>Networks & Memberships</h2>
+      <h2 class="section-title">Memberships</h2>
       <ul>
-        <li>2024 – Present: Società Italiana di Genetica Umana (SIGU), Epigenetic GdL.</li>
-        <li>2023 – Present: Young-InfoLife (CINI).</li>
-        <li>2023 – Present: Bioinformatics Italian Society (BITS).</li>
+        <li>Società Italiana di Genetica Umana (SIGU) – Epigenetic GdL (Oct 2024 – Present)</li>
+        <li>Bioinformatics Italian Society (BITS) (2023 – Present)</li>
+        <li>Young-InfoLife (CINI) (2023 – Present)</li>
       </ul>
     </div>
   </section>
 
-  <!-- Teaching -->
-  <section id="teaching" class="py-5">
+  <!-- Contact -->
+  <section id="contact" class="bg-primary text-white">
     <div class="container">
-      <h2>Teaching</h2>
-      <ul>
-        <li>2022: Tutor in Genetics, CdL Biotecnologie.</li>
-        <li>2022: Tutor in Genetics for students with disabilities, CdL Scienze Ambientali.</li>
-      </ul>
+      <h2 class="section-title text-white">Contact</h2>
+      <p>Email: <a href="mailto:francesco.cecerengs@gmail.com" class="text-white">francesco.cecerengs@gmail.com</a></p>
+      <p>Phone: +39 388 890 3265</p>
     </div>
   </section>
-
-  <!-- Posters & Congress -->
-  <section id="posters" class="py-5 bg-light">
-    <div class="container">
-      <h2>Posters & Congress</h2>
-      <ul>
-        <li>2020: H19 overexpression drives an inflammatory response in mice, Genomic Imprinting Virtual Conference.</li>
-        <li>2021: Beckwith-Wiedemann & Silver-Russell syndrome variants, XXIV Congresso Nazionale SIGU.</li>
-        <!-- Add remaining items -->
-      </ul>
-    </div>
-  </section>
-
-  <!-- Workshops -->
-  <section id="workshops" class="py-5">
-    <div class="container">
-      <h2>Workshops</h2>
-      <ul>
-        <li>Nov 2024: Functional Genomics Workshop, IGB CNR.</li>
-        <li>Dec 2023: R frameworks for single cell data analysis, BBCC Tutorial.</li>
-        <li>Dec 2022: NGS DNA methylation analysis, Virtual Workshop.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Volunteering -->
-  <section id="volunteering" class="py-5 bg-light">
-    <div class="container">
-      <h2>Volunteering</h2>
-      <p>2018 – Present: Telethon Foundation - "Un Assist alla Ricerca".</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="text-center py-4">
-    <p>&copy; 2025 Francesco Cecere</p>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
