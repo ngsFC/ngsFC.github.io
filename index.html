@@ -1,271 +1,207 @@
 <!--
-
 Instructions:
-
-1. Create a new GitHub repository named `yourusername.github.io` (for a root site) or any name (for a project site) and enable GitHub Pages in Settings.
-
-2. Copy this file as `index.html` at the root (or in `docs/` if chosen) of your repo.
-
-3. Commit and push:
-
-   ```bash
-
-   git init
-
-   git add index.html assets/
-
-   git commit -m "Add portfolio template"
-
-   git branch -M main
-
-   git remote add origin https://github.com/yourusername/yourrepo.git
-
-   git push -u origin main
-
-   ```
-
-4. In GitHub Settings > Pages, select branch `main` and folder `/ (root)` or `/docs`, then Save.
-
-5. Your portfolio will be live at `https://yourusername.github.io/` or `https://yourusername.github.io/yourrepo/`.
-
+1. Create a new GitHub repository named `francescocecere.github.io` and enable GitHub Pages.
+2. Copy this file as `index.html` at the root of your repo (or in `docs/`).
+3. Add assets: `assets/css/style.css` and `assets/images/` for any images.
+4. Commit, push, and enable Pages in Settings.
 -->
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-  <meta charset="UTF-8" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Francesco Cecere | Day time - Night time - Any time</title>
-
-  <!-- Google Fonts -->
-
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
-
-  <!-- Bootstrap CSS -->
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-  <link rel="stylesheet" href="assets/css/style.css" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francesco Cecere | CV & Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-
 <body>
-
   <!-- Navbar -->
-
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-
     <div class="container">
-
-      <a class="navbar-brand" href="#home">YourName</a>
-
+      <a class="navbar-brand" href="#home">Francesco Cecere</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-
         <span class="navbar-toggler-icon"></span>
-
       </button>
-
       <div class="collapse navbar-collapse" id="navbarNav">
-
         <ul class="navbar-nav ms-auto">
-
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#memberships">Memberships</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-
         </ul>
-
       </div>
-
     </div>
-
   </nav>
 
-
-
-  <!-- Hero Section -->
-
-  <section id="home" class="vh-100 d-flex align-items-center" style="background: #f8f9fa;">
-
+  <!-- Hero -->
+  <section id="home" class="vh-100 d-flex align-items-center bg-light" style="padding-top:80px;">
     <div class="container text-center">
-
-      <h1 class="display-4">Hi, I'm Your Name</h1>
-
-      <p class="lead">Bioinformatician | Bioconductor Developer | Single-cell Enthusiast</p>
-
-      <a href="#projects" class="btn btn-primary btn-lg mt-3">View Projects</a>
-
+      <h1 class="display-4">Francesco Cecere</h1>
+      <p class="lead">Biologist & Bioinformatician</p>
+      <p>Born: 22/09/1995 | Nationality: Italian</p>
+      <p>Phone: (+39) 3888903265 | Email: <a href="mailto:francesco.cecerengs@gmail.com">francesco.cecerengs@gmail.com</a></p>
+      <p>
+        <a href="https://linkedin.com/in/francesco-cecere-5b5778199" target="_blank">LinkedIn</a> |
+        <a href="https://x.com/FcecereNGS" target="_blank">Twitter</a> |
+        <a href="https://www.researchgate.net/profile/Francesco-Cecere-2" target="_blank">ResearchGate</a> |
+        <a href="https://github.com/ngsFC" target="_blank">GitHub</a>
+      </p>
     </div>
-
   </section>
 
-
-
-  <!-- About Section -->
-
+  <!-- About -->
   <section id="about" class="py-5">
-
     <div class="container">
-
-      <h2 class="mb-4">About Me</h2>
-
-      <p>I’m a bioinformatician specializing in single-cell analysis and graph-based methods. I develop tools like <a href="https://github.com/yourusername/scGraphVerse">scGraphVerse</a> on Bioconductor to help researchers uncover insights in high-dimensional data.</p>
-
+      <h2>About Me</h2>
+      <p>I am Francesco Cecere, a Biologist with a deep-rooted interest in Genomics and Bioinformatics. My research primarily focuses on gene regulatory networks, where I leverage advanced bioinformatics techniques to analyze genomics data. This blend of biology and informatics is not just my profession, but my passion. I am dedicated to scientific innovation, particularly in bioinformatics, to advance health and science.</p>
     </div>
-
   </section>
 
-
-
-  <!-- Projects Section -->
-
-  <section id="projects" class="py-5 bg-light">
-
+  <!-- Experience -->
+  <section id="experience" class="py-5 bg-light">
     <div class="container">
-
-      <h2 class="mb-4">Projects</h2>
-
-      <div class="row g-4">
-
-        <div class="col-md-6">
-
-          <div class="card h-100 shadow-sm">
-
-            <img src="assets/images/project1.png" class="card-img-top" alt="Project 1" />
-
-            <div class="card-body d-flex flex-column">
-
-              <h5 class="card-title">scGraphVerse</h5>
-
-              <p class="card-text flex-grow-1">A Bioconductor package for graph-based single-cell data analysis, visualization, and interpretation.</p>
-
-              <a href="https://github.com/yourusername/scGraphVerse" class="btn btn-outline-primary mt-2">Learn More</a>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <!-- Repeat project cards as needed -->
-
+      <h2>Work Experience</h2>
+      <div class="mb-4">
+        <h5>Researcher III level, Institute of Genetics and Biophysics "Adriano Buzzati-Traverso" (IGB) - CNR</h5>
+        <small class="text-muted">Aug 26, 2024 – Present | Napoli, Italy</small>
+        <p><strong>Project:</strong> National Centre for HPC, Big Data and Quantum Computing</p>
+        <p><strong>Title:</strong> Development and testing of algorithms for the reconstruction of gene regulatory networks from single-cell transcriptomic data.<br>Bando n. 400.5 IGB PNRR prot. 401541 del 15/12/2023</p>
       </div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- Skills Section -->
-
-  <section id="skills" class="py-5">
-
-    <div class="container">
-
-      <h2 class="mb-4">Skills</h2>
-
-      <div class="row g-2">
-
-        <div class="col-auto"><span class="badge bg-secondary p-2">R / Bioconductor</span></div>
-
-        <div class="col-auto"><span class="badge bg-secondary p-2">Python</span></div>
-
-        <div class="col-auto"><span class="badge bg-secondary p-2">Single-cell Analysis</span></div>
-
-        <div class="col-auto"><span class="badge bg-secondary p-2">Graph Theory</span></div>
-
-        <div class="col-auto"><span class="badge bg-secondary p-2">Data Visualization</span></div>
-
+      <div class="mb-4">
+        <h5>Visiting Postdoc, Josep Carreras Leukaemia Research Institute</h5>
+        <small class="text-muted">May 2023 – Jul 2023 | Badalona, Spain</small>
+        <p>Worked with Dr. Esteller’s group integrating clinical, genetic, and epigenetic data from Wilms tumor patients to improve diagnosis and stratification. Data analysis: EPIC methylation array, RNA-seq, Exome-seq.</p>
       </div>
-
+      <div class="mb-4">
+        <h5>Postdoc Researcher, University of Campania "Luigi Vanvitelli"</h5>
+        <small class="text-muted">Feb 2023 – Aug 2024 | Caserta, Italy</small>
+        <p>Study of methylation and gene expression profiles of imprinted genes and the whole genome in Wilms tumor (SSD: BIO/18). Data analysis: EPIC methylation array, RNA-seq, Exome-seq.</p>
+      </div>
+      <div class="mb-4">
+        <h5>Visiting Student, Babraham Institute</h5>
+        <small class="text-muted">Jul 2022 | Cambridge, UK</small>
+        <p>Collaborated on BS-seq and single-cell RNA-seq analysis of germ cells with Drs. Kelsey and Andrews.</p>
+      </div>
     </div>
-
   </section>
 
-
-
-  <!-- Contact Section -->
-
-  <section id="contact" class="py-5 bg-light">
-
+  <!-- Education -->
+  <section id="education" class="py-5">
     <div class="container">
-
-      <h2 class="mb-4">Get In Touch</h2>
-
-      <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
-
-        <div class="mb-3">
-
-          <label for="name" class="form-label">Name</label>
-
-          <input type="text" class="form-control" id="name" name="Name" required />
-
-        </div>
-
-        <div class="mb-3">
-
-          <label for="email" class="form-label">Email</label>
-
-          <input type="email" class="form-control" id="email" name="Email" required />
-
-        </div>
-
-        <div class="mb-3">
-
-          <label for="message" class="form-label">Message</label>
-
-          <textarea class="form-control" id="message" name="Message" rows="4" required></textarea>
-
-        </div>
-
-        <button type="submit" class="btn btn-primary">Send</button>
-
-      </form>
-
+      <h2>Education</h2>
+      <div class="mb-3">
+        <h5>PhD in Molecular Life Sciences, University of Campania "Luigi Vanvitelli"</h5>
+        <small class="text-muted">Nov 2019 – Jan 2023 | Caserta, Italy</small>
+        <p>Research on imprinting disorders (BWS, SRS) using RNA-seq, Exome-seq, RRBS, BS-seq, ChIP-seq.</p>
+      </div>
+      <div class="mb-3">
+        <h5>Master's in Molecular Biology, University of Campania "Luigi Vanvitelli"</h5>
+        <small class="text-muted">2017 – 2019 | Caserta, Italy</small>
+        <p>Thesis: Identification of novel transcription factors binding imprinting control regions. Grade: 110/110 cum laude.</p>
+      </div>
+      <div class="mb-3">
+        <h5>Bachelor's in Biological Sciences, University of Campania "Luigi Vanvitelli"</h5>
+        <small class="text-muted">2013 – 2016 | Caserta, Italy</small>
+        <p>Thesis: Neuropathological effects of alcohol abuse associated with thiamine deficiency. Grade: 110/110 cum laude.</p>
+      </div>
     </div>
-
   </section>
 
+  <!-- Publications -->
+  <section id="publications" class="py-5 bg-light">
+    <div class="container">
+      <h2>Selected Publications</h2>
+      <ul>
+        <li>Giaccari C., Cecere F., Argenziano L., Pagano A., Riccio A. (2024). <em>New insights into oocyte cytoplasmic lattice-associated proteins.</em> Trends in Genetics. https://doi.org/10.1016/j.tig.2024.06.002</li>
+        <li>Lullo V., Cecere F., ... Strazzullo M. (2024). <em>A novel iPSC-based model of ICF syndrome subtype 2 recapitulates the molecular phenotype of ZBTB24 deficiency.</em> Frontiers in Immunology, 15, 1419748.</li>
+        <li>Cillo F., Coppola E., Habetswallner F., Cecere F., ... Giardino G. (2024). <em>Understanding the Variability of 22q11.2 Deletion Syndrome: The Role of Epigenetic Factors.</em> Genes, 15(3), 321.</li>
+        <li>Giaccari C., Cecere F., ... Riccio A. (2024). <em>A maternal-effect Padi6 variant causes ...</em> Genes & Development, 38(3-4), 131–150.</li>
+        <li>Verma A., Krishnan V.P., Cecere F., ... Riccio A. (2023). <em>ICF1-Syndrome-Associated DNMT3B Mutations Prevent De Novo Methylation...</em> Biomolecules, 13(12), 1717.</li>
+        <li>Pignata L., Cecere F., ... Riccio A. (2023). <em>Co-occurrence of Beckwith-Wiedemann syndrome and pseudohypoparathyroidism type 1B...</em> Frontiers in Cell and Developmental Biology, 11, 1237629.</li>
+        <li>Cecere F., Pignata L., ... Riccio A. (2023). <em>Co-Occurrence of Beckwith-Wiedemann Syndrome and Early-Onset Colorectal Cancer.</em> Cancers, 15(7), 1944.</li>
+        <!-- Add remaining publications similarly -->
+      </ul>
+    </div>
+  </section>
 
+  <!-- Courses -->
+  <section id="courses" class="py-5">
+    <div class="container">
+      <h2>Professional Courses</h2>
+      <ul>
+        <li>Sep 2023: scRNA-seq hands-on course, Università degli Studi di Torino.</li>
+        <li>Dec 2021: 10x single cell RNA Seq Analysis, Babraham Institute.</li>
+        <li>Sep 2021: Data Science: Machine Learning in Cancer Genomics, ISAGS.</li>
+        <li>Mar 2021: NGS Data Analysis in Diagnostics, Università di Pavia.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Memberships -->
+  <section id="memberships" class="py-5 bg-light">
+    <div class="container">
+      <h2>Networks & Memberships</h2>
+      <ul>
+        <li>2024 – Present: Società Italiana di Genetica Umana (SIGU), Epigenetic GdL.</li>
+        <li>2023 – Present: Young-InfoLife (CINI).</li>
+        <li>2023 – Present: Bioinformatics Italian Society (BITS).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Teaching -->
+  <section id="teaching" class="py-5">
+    <div class="container">
+      <h2>Teaching</h2>
+      <ul>
+        <li>2022: Tutor in Genetics, CdL Biotecnologie.</li>
+        <li>2022: Tutor in Genetics for students with disabilities, CdL Scienze Ambientali.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Posters & Congress -->
+  <section id="posters" class="py-5 bg-light">
+    <div class="container">
+      <h2>Posters & Congress</h2>
+      <ul>
+        <li>2020: H19 overexpression drives an inflammatory response in mice, Genomic Imprinting Virtual Conference.</li>
+        <li>2021: Beckwith-Wiedemann & Silver-Russell syndrome variants, XXIV Congresso Nazionale SIGU.</li>
+        <!-- Add remaining items -->
+      </ul>
+    </div>
+  </section>
+
+  <!-- Workshops -->
+  <section id="workshops" class="py-5">
+    <div class="container">
+      <h2>Workshops</h2>
+      <ul>
+        <li>Nov 2024: Functional Genomics Workshop, IGB CNR.</li>
+        <li>Dec 2023: R frameworks for single cell data analysis, BBCC Tutorial.</li>
+        <li>Dec 2022: NGS DNA methylation analysis, Virtual Workshop.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Volunteering -->
+  <section id="volunteering" class="py-5 bg-light">
+    <div class="container">
+      <h2>Volunteering</h2>
+      <p>2018 – Present: Telethon Foundation - "Un Assist alla Ricerca".</p>
+    </div>
+  </section>
 
   <!-- Footer -->
-
   <footer class="text-center py-4">
-
-    <p>&copy; 2025 Your Name. Built with ❤️ using Bootstrap.</p>
-
+    <p>&copy; 2025 Francesco Cecere</p>
   </footer>
 
-
-
-  <!-- Bootstrap JS -->
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
-
 </html>
-
-
-
-<!--
-
-Additional Assets:
-
-- assets/css/style.css: add custom styles (e.g., body font-family, card hover effects).
-
-- assets/images/: include screenshots or logos for each project.
-
--->
-
 
