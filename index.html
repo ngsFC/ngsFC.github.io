@@ -15,6 +15,8 @@ Instructions:
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <!-- Bootswatch Flatly Theme -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/flatly/bootstrap.min.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     body { font-family: 'Montserrat', sans-serif; }
@@ -22,6 +24,191 @@ Instructions:
     .navbar-brand { font-weight: 600; }
     .section-title { position: relative; margin-bottom: 1.5rem; }
     .section-title::after { content: ''; position: absolute; width: 60px; height: 3px; background: #327c88; bottom: -10px; left: 0; }
+    
+    .hero-intro {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .floating-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(50, 124, 136, 0.3);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+    .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+    .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+    .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+    .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+    .particle:nth-child(7) { left: 70%; animation-delay: 1.5s; }
+    .particle:nth-child(8) { left: 80%; animation-delay: 2.5s; }
+    .particle:nth-child(9) { left: 90%; animation-delay: 3.5s; }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+      50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .typewriter {
+      overflow: hidden;
+      border-right: .15em solid #327c88;
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: .15em;
+      animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    }
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: #327c88; }
+    }
+    
+    .profile-avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin: 0 auto 2rem;
+      background: linear-gradient(45deg, #327c88, #4a9baa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: white;
+      box-shadow: 0 10px 30px rgba(50, 124, 136, 0.3);
+      animation: pulse 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 10px 30px rgba(50, 124, 136, 0.3); }
+      100% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(50, 124, 136, 0.4); }
+    }
+    
+    .info-cards {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+    
+    .info-card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      min-width: 150px;
+    }
+    
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .info-card i {
+      font-size: 1.5rem;
+      color: #327c88;
+      margin-bottom: 0.5rem;
+    }
+    
+    .social-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    
+    .btn-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid;
+      font-weight: 500;
+    }
+    
+    .btn-linkedin {
+      background: #0077b5;
+      color: white;
+      border-color: #0077b5;
+    }
+    
+    .btn-linkedin:hover {
+      background: transparent;
+      color: #0077b5;
+      transform: translateY(-2px);
+    }
+    
+    .btn-twitter {
+      background: #1da1f2;
+      color: white;
+      border-color: #1da1f2;
+    }
+    
+    .btn-twitter:hover {
+      background: transparent;
+      color: #1da1f2;
+      transform: translateY(-2px);
+    }
+    
+    .btn-github {
+      background: #333;
+      color: white;
+      border-color: #333;
+    }
+    
+    .btn-github:hover {
+      background: transparent;
+      color: #333;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .info-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .social-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .profile-avatar {
+        width: 140px;
+        height: 140px;
+        font-size: 3rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -46,17 +233,65 @@ Instructions:
   </nav>
 
   <!-- Hero -->
-  <section id="home" class="bg-light text-dark d-flex align-items-center" style="min-height:100vh; padding-top:80px;">
-    <div class="container text-center">
-      <h1 class="display-3 fw-bold">Francesco Cecere</h1>
-      <p class="lead">Biologist & Bioinformatician</p>
-      <p>Born: 22/09/1995 • Italian</p>
-      <p>
-        <a href="mailto:francesco.cecerengs@gmail.com" class="text-decoration-none">francesco.cecerengs@gmail.com</a> •
-        <a href="tel:+393888903265" class="text-decoration-none">+39 3888903265</a>
-      </p>
-      <div class="mt-3">
-        <a href="https://linkedin.com/in/francesco-cecere-5b5778199" class="btn btn-outline-primary btn-sm mx-1" target="_blank">LinkedIn</a>
+  <section id="home" class="hero-intro text-dark d-flex align-items-center" style="min-height:100vh; padding-top:80px;">
+    <!-- Floating Particles -->
+    <div class="floating-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <div class="container text-center hero-content">
+      <!-- Profile Avatar -->
+      <div class="profile-avatar">
+        <i class="fas fa-dna"></i>
+      </div>
+      <!-- Main Title with Typewriter Effect -->
+      <h1 class="display-3 fw-bold mb-3">Francesco Cecere</h1>
+      <div class="typewriter">
+        <p class="lead mb-4">Biologist & Bioinformatician</p>
+      </div>
+      <!-- Info Cards -->
+      <div class="info-cards">
+        <div class="info-card text-center">
+          <i class="fas fa-birthday-cake d-block"></i>
+          <small class="text-muted">Born</small>
+          <div class="fw-bold">22/09/1995</div>
+        </div>
+        
+        <div class="info-card text-center">
+          <i class="fas fa-flag d-block"></i>
+          <small class="text-muted">Nationality</small>
+          <div class="fw-bold">Italian</div>
+        </div>
+        
+        <div class="info-card text-center">
+          <i class="fas fa-envelope d-block"></i>
+          <small class="text-muted">Email</small>
+          <div class="fw-bold">
+            <a href="mailto:francesco.cecerengs@gmail.com" class="text-decoration-none" style="font-size: 0.9rem;">francesco.cecerengs@gmail.com</a>
+          </div>
+        </div>
+        
+        <div class="info-card text-center">
+          <i class="fas fa-phone d-block"></i>
+          <small class="text-muted">Phone</small>
+          <div class="fw-bold">
+            <a href="tel:+393888903265" class="text-decoration-none">+39 3888903265</a>
+          </div>
+        </div>
+      </div>
+      <!-- Enhanced Social Buttons -->
+      <div class="social-buttons">
+        <a href="https://linkedin.com/in/francesco-cecere-5b5778199" class="btn-social btn-linkedin" target="_blank">
+          <i class="fab fa-linkedin-in"></i>
+          LinkedIn
+        </a>
         <a href="https://x.com/FcecereNGS" class="btn btn-outline-primary btn-sm mx-1" target="_blank">X (Twitter)</a>
         <a href="https://github.com/ngsFC" class="btn btn-outline-primary btn-sm mx-1" target="_blank">GitHub</a>
       </div>
