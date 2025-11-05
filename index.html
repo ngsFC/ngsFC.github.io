@@ -19,25 +19,159 @@ Instructions:
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
-    body { font-family: 'Montserrat', sans-serif; }
-    section { padding: 60px 0; }
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f7fa;
+      --bg-hero: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      --text-primary: #212529;
+      --text-secondary: #6c757d;
+      --accent-color: #327c88;
+      --accent-hover: #4a9baa;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --card-border: rgba(255, 255, 255, 0.2);
+      --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.15);
+      --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    body.dark-mode {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-hero: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      --text-primary: #f8f9fa;
+      --text-secondary: #adb5bd;
+      --accent-color: #4a9baa;
+      --accent-hover: #327c88;
+      --card-bg: rgba(45, 45, 45, 0.9);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.5);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.6);
+      --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-primary);
+    }
+
+    body.dark-mode .bg-light {
+      background-color: var(--bg-secondary) !important;
+    }
+
+    body.dark-mode .navbar-dark {
+      background-color: #0d47a1 !important;
+    }
+
+    body.dark-mode .bg-primary {
+      background-color: #0d47a1 !important;
+    }
+
+    section {
+      padding: 60px 0;
+      transition: all 0.3s ease;
+    }
+
     .navbar-brand { font-weight: 600; }
-    .section-title { position: relative; margin-bottom: 1.5rem; }
-    .section-title::after { content: ''; position: absolute; width: 60px; height: 3px; background: #327c88; bottom: -10px; left: 0; }
-    
+
+    .section-title {
+      position: relative;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 3px;
+      background: var(--accent-color);
+      bottom: -10px;
+      left: 0;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 70px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .dark-mode-toggle:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .dark-mode-toggle i {
+      font-size: 1.2rem;
+      color: var(--accent-color);
+    }
+
+    /* Enhanced Scroll Animations */
+    .scroll-fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scroll-fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scroll-fade-in-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scroll-fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .scroll-fade-in-right {
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .scroll-fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
     .hero-intro {
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      background: var(--bg-hero);
       position: relative;
       overflow: hidden;
+      transition: background 0.5s ease;
     }
-    
+
     .floating-particles {
       position: absolute;
       width: 100%;
       height: 100%;
       overflow: hidden;
     }
-    
+
     .particle {
       position: absolute;
       width: 4px;
@@ -46,7 +180,11 @@ Instructions:
       border-radius: 50%;
       animation: float 6s ease-in-out infinite;
     }
-    
+
+    body.dark-mode .particle {
+      background: rgba(74, 155, 170, 0.4);
+    }
+
     .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
     .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
     .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
@@ -56,56 +194,57 @@ Instructions:
     .particle:nth-child(7) { left: 70%; animation-delay: 1.5s; }
     .particle:nth-child(8) { left: 80%; animation-delay: 2.5s; }
     .particle:nth-child(9) { left: 90%; animation-delay: 3.5s; }
-    
+
     @keyframes float {
       0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
       50% { transform: translateY(-20px) rotate(180deg); opacity: 0.8; }
     }
-    
+
     .hero-content {
       position: relative;
       z-index: 2;
     }
-    
+
     .typewriter {
       overflow: hidden;
-      border-right: .15em solid #327c88;
+      border-right: .15em solid var(--accent-color);
       white-space: nowrap;
       margin: 0 auto;
       letter-spacing: .15em;
       animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
     }
-    
+
     @keyframes typing {
       from { width: 0 }
       to { width: 100% }
     }
-    
+
     @keyframes blink-caret {
       from, to { border-color: transparent }
-      50% { border-color: #327c88; }
+      50% { border-color: var(--accent-color); }
     }
-    
+
     .profile-avatar {
       width: 180px;
       height: 180px;
       border-radius: 50%;
       margin: 0 auto 2rem;
-      background: linear-gradient(45deg, #327c88, #4a9baa);
+      background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 4rem;
       color: white;
-      box-shadow: 0 10px 30px rgba(50, 124, 136, 0.3);
+      box-shadow: var(--shadow-sm);
       animation: pulse 2s ease-in-out infinite alternate;
     }
-    
+
     @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 10px 30px rgba(50, 124, 136, 0.3); }
-      100% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(50, 124, 136, 0.4); }
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
     }
-    
+
+    /* Glassmorphism Cards */
     .info-cards {
       display: flex;
       gap: 1rem;
@@ -113,29 +252,34 @@ Instructions:
       flex-wrap: wrap;
       margin: 2rem 0;
     }
-    
+
     .info-card {
-      background: rgba(255, 255, 255, 0.9);
+      background: var(--card-bg);
       padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      box-shadow: var(--shadow-sm);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       min-width: 150px;
     }
-    
+
     .info-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: var(--shadow-md);
     }
-    
+
     .info-card i {
       font-size: 1.5rem;
-      color: #327c88;
+      color: var(--accent-color);
       margin-bottom: 0.5rem;
     }
-    
+
+    .info-card a {
+      color: var(--text-primary);
+    }
+
     .social-buttons {
       display: flex;
       gap: 1rem;
@@ -143,7 +287,7 @@ Instructions:
       flex-wrap: wrap;
       margin-top: 2rem;
     }
-    
+
     .btn-social {
       display: inline-flex;
       align-items: center;
@@ -155,63 +299,231 @@ Instructions:
       border: 2px solid;
       font-weight: 500;
     }
-    
+
     .btn-linkedin {
       background: #0077b5;
       color: white;
       border-color: #0077b5;
     }
-    
+
     .btn-linkedin:hover {
       background: transparent;
       color: #0077b5;
       transform: translateY(-2px);
     }
-    
+
+    body.dark-mode .btn-linkedin:hover {
+      background: transparent;
+      color: #0077b5;
+    }
+
     .btn-twitter {
       background: #1da1f2;
       color: white;
       border-color: #1da1f2;
     }
-    
+
     .btn-twitter:hover {
       background: transparent;
       color: #1da1f2;
       transform: translateY(-2px);
     }
-    
+
+    body.dark-mode .btn-twitter:hover {
+      background: transparent;
+      color: #1da1f2;
+    }
+
     .btn-github {
       background: #333;
       color: white;
       border-color: #333;
     }
-    
+
     .btn-github:hover {
       background: transparent;
       color: #333;
       transform: translateY(-2px);
     }
-    
+
+    body.dark-mode .btn-github {
+      background: #f8f9fa;
+      color: #333;
+      border-color: #f8f9fa;
+    }
+
+    body.dark-mode .btn-github:hover {
+      background: transparent;
+      color: #f8f9fa;
+      border-color: #f8f9fa;
+    }
+
+    /* Publication Cards */
+    .publication-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .publication-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent-color), var(--accent-hover));
+    }
+
+    .publication-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .publication-card h5 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      line-height: 1.4;
+    }
+
+    .publication-card .authors {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .publication-card .journal-info {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .publication-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .publication-tag {
+      background: var(--accent-color);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .publication-metrics {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+
+    .metric-item {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    .metric-item i {
+      color: var(--accent-color);
+    }
+
+    .loading-spinner {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-secondary);
+    }
+
+    .loading-spinner i {
+      font-size: 2rem;
+      color: var(--accent-color);
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .timeline {
+      position: relative;
+    }
+
+    .timeline > div {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline > div::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      border: 3px solid var(--bg-primary);
+      box-shadow: 0 0 0 3px var(--accent-color);
+    }
+
+    .timeline > div:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 20px;
+      width: 2px;
+      height: calc(100% + 20px);
+      background: var(--accent-color);
+      opacity: 0.3;
+    }
+
     @media (max-width: 768px) {
       .info-cards {
         flex-direction: column;
         align-items: center;
       }
-      
+
       .social-buttons {
         flex-direction: column;
         align-items: center;
       }
-      
+
       .profile-avatar {
         width: 140px;
         height: 140px;
         font-size: 3rem;
       }
+
+      .dark-mode-toggle {
+        top: 60px;
+        right: 10px;
+        padding: 0.4rem 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Dark Mode Toggle -->
+  <div class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">
+    <i class="fas fa-moon" id="darkModeIcon"></i>
+  </div>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
@@ -249,7 +561,7 @@ Instructions:
     <div class="container text-center hero-content">
       <!-- Profile Avatar -->
       <div class="profile-avatar">
-        <i class="fas fa-dna"></i>
+        <img src="https://github.com/ngsFC.png" alt="Francesco Cecere" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
       </div>
       <!-- Main Title with Typewriter Effect -->
       <h1 class="display-3 fw-bold mb-3">Francesco Cecere</h1>
@@ -299,7 +611,7 @@ Instructions:
   </section>
 
   <!-- About -->
-  <section id="about">
+  <section id="about" class="scroll-fade-in">
     <div class="container">
       <h2 class="section-title">About Me</h2>
       <p>I am a biologist specializing in genomics and bioinformatics. My passion centers on reconstructing gene regulatory networks using single-cell transcriptomics and epigenomic data, striving to advance health and scientific innovation.</p>
@@ -307,7 +619,7 @@ Instructions:
   </section>
 
   <!-- Experience -->
-  <section id="experience" class="bg-light">
+  <section id="experience" class="bg-light scroll-fade-in-left">
     <div class="container">
       <h2 class="section-title">Work Experience</h2>
       <div class="timeline">
@@ -336,7 +648,7 @@ Instructions:
   </section>
 
   <!-- Education -->
-  <section id="education">
+  <section id="education" class="scroll-fade-in-right">
     <div class="container">
       <h2 class="section-title">Education</h2>
       <ul class="list-unstyled">
@@ -348,10 +660,20 @@ Instructions:
   </section>
 
   <!-- Publications -->
-  <section id="publications" class="bg-light">
+  <section id="publications" class="bg-light scroll-fade-in">
     <div class="container">
       <h2 class="section-title">Publications</h2>
-      <ul>
+      <p class="text-muted mb-4">Publications are automatically fetched from PubMed. Last updated: <span id="lastUpdated">Loading...</span></p>
+
+      <div id="publicationsContainer">
+        <div class="loading-spinner">
+          <i class="fas fa-spinner"></i>
+          <p>Loading publications from PubMed...</p>
+        </div>
+      </div>
+
+      <!-- Fallback list (will be hidden when publications load) -->
+      <ul id="fallbackPublications" style="display:none">
         <li><a href="https://pubmed.ncbi.nlm.nih.gov/38955588/" target="_blank">Giaccari C., Cecere F., Argenziano L., Pagano A., Riccio A. New insights into oocyte cytoplasmic lattice-associated proteins. Trends Genet. 2024.</a></li>
         <li><a href="https://pubmed.ncbi.nlm.nih.gov/39040103/" target="_blank">Lullo V., Cecere F., et al. A novel iPSC-based model of ICF syndrome subtype 2 … Front Immunol. 2024.</a></li>
         <li><a href="https://pubmed.ncbi.nlm.nih.gov/38540380/" target="_blank">Cillo F., Coppola E., Habetswallner F., Cecere F., et al. Understanding the Variability of 22q11.2 Deletion Syndrome … Genes. 2024.</a></li>
@@ -370,7 +692,7 @@ Instructions:
   </section>
 
   <!-- Memberships -->
-  <section id="memberships">
+  <section id="memberships" class="scroll-fade-in">
     <div class="container">
       <h2 class="section-title">Memberships</h2>
       <ul>
@@ -391,6 +713,368 @@ Instructions:
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Dark Mode Toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      const icon = document.getElementById('darkModeIcon');
+      const isDark = document.body.classList.contains('dark-mode');
+
+      // Update icon
+      icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+
+      // Save preference
+      localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+    }
+
+    // Load saved dark mode preference
+    document.addEventListener('DOMContentLoaded', function() {
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+        document.getElementById('darkModeIcon').className = 'fas fa-sun';
+      }
+    });
+
+    // Scroll Animations
+    function checkScroll() {
+      const elements = document.querySelectorAll('.scroll-fade-in, .scroll-fade-in-left, .scroll-fade-in-right');
+
+      elements.forEach(element => {
+        const rect = element.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.85;
+
+        if (isVisible) {
+          element.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', checkScroll);
+    window.addEventListener('load', checkScroll);
+
+    // PubMed API Integration - Simple approach
+    const AUTHOR_NAME = 'Francesco Cecere';
+
+    // Use a known publication to identify YOUR Francesco Cecere
+    // Based on common co-authors from your publications
+    const COMMON_COAUTHORS = [
+      'Riccio A',
+      'Pignata L',
+      'Giaccari C',
+      'Acurzio B',
+      'Kelsey G',
+      'Cerrato F',
+      'Del Bene M'
+    ];
+
+    // Co-first author papers (marked with * in publications)
+    const CO_FIRST_AUTHOR_PAPERS = [
+      '35643636',  // Novel genetic variants of KHDC3L & subcortical maternal complex
+      '35918739'   // Mismatch-repair proteins MSH2 & MSH6 interact
+    ];
+
+    const PUBMED_SEARCH_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi';
+    const PUBMED_FETCH_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi';
+
+    async function fetchPublications() {
+      try {
+        // Step 1: Search for publications by author name
+        const searchParams = new URLSearchParams({
+          db: 'pubmed',
+          term: `${AUTHOR_NAME}[Author]`,
+          retmax: 50,
+          retmode: 'json',
+          sort: 'date'
+        });
+
+        const searchUrl = `${PUBMED_SEARCH_URL}?${searchParams}`;
+        console.log('Fetching from:', searchUrl);
+
+        const searchResponse = await fetch(searchUrl);
+        const searchData = await searchResponse.json();
+
+        if (!searchData.esearchresult || !searchData.esearchresult.idlist || searchData.esearchresult.idlist.length === 0) {
+          throw new Error('No publications found');
+        }
+
+        const pubmedIds = searchData.esearchresult.idlist;
+        console.log('Found', pubmedIds.length, 'publications');
+
+        // Step 2: Fetch details for each publication
+        const fetchParams = new URLSearchParams({
+          db: 'pubmed',
+          id: pubmedIds.join(','),
+          retmode: 'json'
+        });
+
+        const fetchResponse = await fetch(`${PUBMED_FETCH_URL}?${fetchParams}`);
+        const fetchData = await fetchResponse.json();
+
+        // Step 3: Filter publications by co-authors
+        // Only show publications where Francesco Cecere works with known collaborators
+        const filteredIds = pubmedIds.filter(id => {
+          const pub = fetchData.result[id];
+          if (!pub || !pub.authors) return false;
+
+          // Get all author names from this publication
+          const authorNames = pub.authors.map(a => a.name);
+
+          // Check if any of the common co-authors appear in this publication
+          const hasCommonCoauthor = COMMON_COAUTHORS.some(coauthor =>
+            authorNames.some(name => name.includes(coauthor))
+          );
+
+          if (hasCommonCoauthor) {
+            console.log('✓ Including:', pub.title);
+            return true;
+          } else {
+            console.log('✗ Filtering out:', pub.title, '- Authors:', authorNames.slice(0, 3).join(', '));
+            return false;
+          }
+        });
+
+        console.log('After filtering:', filteredIds.length, 'of', pubmedIds.length, 'publications');
+
+        // Step 4: Parse and display publications
+        displayPublications(fetchData.result, filteredIds);
+
+        // Update last updated time
+        const now = new Date();
+        document.getElementById('lastUpdated').textContent = now.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+
+      } catch (error) {
+        console.error('Error fetching publications:', error);
+        displayError();
+      }
+    }
+
+    function parsePublicationsFromXML(xmlDoc, pubmedIds) {
+      const publications = [];
+      const docSums = xmlDoc.getElementsByTagName('DocSum');
+
+      for (let docSum of docSums) {
+        const pub = {};
+        const items = docSum.getElementsByTagName('Item');
+
+        for (let item of items) {
+          const name = item.getAttribute('Name');
+          if (name === 'Title') {
+            pub.title = item.textContent;
+          } else if (name === 'PubDate') {
+            pub.pubdate = item.textContent;
+          } else if (name === 'Source') {
+            pub.source = item.textContent;
+          } else if (name === 'AuthorList') {
+            pub.authors = [];
+            const authors = item.getElementsByTagName('Item');
+            for (let author of authors) {
+              pub.authors.push({ name: author.textContent });
+            }
+          }
+        }
+
+        const id = docSum.getElementsByTagName('Id')[0]?.textContent;
+        if (id) {
+          pub.id = id;
+          publications.push(pub);
+        }
+      }
+
+      return publications;
+    }
+
+    function displayPublicationsFromXML(publications, pubmedIds) {
+      const container = document.getElementById('publicationsContainer');
+      container.innerHTML = '';
+
+      publications.forEach(pub => {
+        if (!pub || !pub.title) return;
+
+        const id = pub.id;
+        const card = document.createElement('div');
+        card.className = 'publication-card';
+
+        // Extract year from publication date
+        const year = pub.pubdate ? pub.pubdate.split(' ')[0] : 'N/A';
+
+        // Check author position
+        let authorPosition = '';
+        let isFirstAuthor = false;
+        let isLastAuthor = false;
+        let isCoFirstAuthor = false;
+
+        // Check if this is a co-first author paper
+        if (CO_FIRST_AUTHOR_PAPERS.includes(id)) {
+          authorPosition = '<span class="publication-tag" style="background: #4a9baa;">Co-First Author</span>';
+          isCoFirstAuthor = true;
+        } else if (pub.authors && pub.authors.length > 0) {
+          const firstAuthor = pub.authors[0].name;
+          const lastAuthor = pub.authors[pub.authors.length - 1].name;
+
+          if (firstAuthor.includes('Cecere')) {
+            authorPosition = '<span class="publication-tag">First Author</span>';
+            isFirstAuthor = true;
+          } else if (lastAuthor.includes('Cecere')) {
+            authorPosition = '<span class="publication-tag" style="background: #6c757d;">Last Author</span>';
+            isLastAuthor = true;
+          }
+        }
+
+        // Format authors with emphasis on Cecere
+        let authorsDisplay = '';
+        if (pub.authors && pub.authors.length > 0) {
+          const authorList = pub.authors.slice(0, 10).map(a => {
+            if (a.name.includes('Cecere')) {
+              return `<strong>${a.name}</strong>`;
+            }
+            return a.name;
+          });
+          authorsDisplay = authorList.join(', ') + (pub.authors.length > 10 ? ', et al.' : '');
+        } else {
+          authorsDisplay = 'No authors listed';
+        }
+
+        // Extract journal name
+        const journal = pub.source || 'Unknown Journal';
+
+        card.innerHTML = `
+          <h5>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank" style="text-decoration:none; color:inherit;">
+              ${pub.title}
+            </a>
+          </h5>
+          <div class="authors">${authorsDisplay}</div>
+          <div class="journal-info">${journal}, ${year}</div>
+          ${authorPosition ? `<div class="publication-tags">${authorPosition}</div>` : ''}
+          <div class="publication-metrics">
+            <div class="metric-item">
+              <i class="fas fa-calendar-alt"></i>
+              <span>${year}</span>
+            </div>
+            <div class="metric-item">
+              <i class="fas fa-link"></i>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank" style="color:inherit;">PMID: ${id}</a>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function displayPublications(result, pubmedIds) {
+      const container = document.getElementById('publicationsContainer');
+      container.innerHTML = '';
+
+      pubmedIds.forEach(id => {
+        const pub = result[id];
+        if (!pub || !pub.title) return;
+
+        const card = document.createElement('div');
+        card.className = 'publication-card';
+
+        // Extract year from publication date
+        const year = pub.pubdate ? pub.pubdate.split(' ')[0] : 'N/A';
+
+        // Check author position
+        let authorPosition = '';
+        let isFirstAuthor = false;
+        let isLastAuthor = false;
+        let isCoFirstAuthor = false;
+
+        // Check if this is a co-first author paper
+        if (CO_FIRST_AUTHOR_PAPERS.includes(id)) {
+          authorPosition = '<span class="publication-tag" style="background: #4a9baa;">Co-First Author</span>';
+          isCoFirstAuthor = true;
+        } else if (pub.authors && pub.authors.length > 0) {
+          const firstAuthor = pub.authors[0].name;
+          const lastAuthor = pub.authors[pub.authors.length - 1].name;
+
+          if (firstAuthor.includes('Cecere')) {
+            authorPosition = '<span class="publication-tag">First Author</span>';
+            isFirstAuthor = true;
+          } else if (lastAuthor.includes('Cecere')) {
+            authorPosition = '<span class="publication-tag" style="background: #6c757d;">Last Author</span>';
+            isLastAuthor = true;
+          }
+        }
+
+        // Format authors with emphasis on Cecere
+        let authorsDisplay = '';
+        if (pub.authors && pub.authors.length > 0) {
+          const authorList = pub.authors.slice(0, 10).map(a => {
+            if (a.name.includes('Cecere')) {
+              return `<strong>${a.name}</strong>`;
+            }
+            return a.name;
+          });
+          authorsDisplay = authorList.join(', ') + (pub.authors.length > 10 ? ', et al.' : '');
+        } else {
+          authorsDisplay = 'No authors listed';
+        }
+
+        // Extract journal name
+        const journal = pub.source || 'Unknown Journal';
+
+        card.innerHTML = `
+          <h5>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank" style="text-decoration:none; color:inherit;">
+              ${pub.title}
+            </a>
+          </h5>
+          <div class="authors">${authorsDisplay}</div>
+          <div class="journal-info">${journal}, ${year}</div>
+          ${authorPosition ? `<div class="publication-tags">${authorPosition}</div>` : ''}
+          <div class="publication-metrics">
+            <div class="metric-item">
+              <i class="fas fa-calendar-alt"></i>
+              <span>${year}</span>
+            </div>
+            <div class="metric-item">
+              <i class="fas fa-link"></i>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/${id}/" target="_blank" style="color:inherit;">PMID: ${id}</a>
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    function displayError() {
+      const container = document.getElementById('publicationsContainer');
+      container.innerHTML = `
+        <div class="alert alert-danger" role="alert">
+          <i class="fas fa-exclamation-triangle"></i>
+          <strong>Unable to fetch publications from PubMed.</strong>
+          <p>Please check the browser console (F12) for detailed error messages.</p>
+        </div>
+      `;
+      document.getElementById('lastUpdated').textContent = 'Failed to load';
+    }
+
+    // Load publications when page loads
+    window.addEventListener('load', fetchPublications);
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
 
