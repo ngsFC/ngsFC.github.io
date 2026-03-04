@@ -580,6 +580,45 @@ Instructions:
       opacity: 0.3;
     }
 
+    .subsection-title {
+      color: var(--accent-color);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .package-card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .package-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .award-card {
+      background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+      border-radius: 15px;
+      padding: 2rem;
+      color: white;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 1.5rem;
+    }
+
     @media (max-width: 768px) {
       .info-cards {
         flex-direction: column;
@@ -660,6 +699,12 @@ Instructions:
         </button>
         <button class="tab-button" onclick="switchTab('memberships', event)">
           <i class="fas fa-users"></i> Memberships
+        </button>
+        <button class="tab-button" onclick="switchTab('activities', event)">
+          <i class="fas fa-calendar-alt"></i> Activities
+        </button>
+        <button class="tab-button" onclick="switchTab('teaching', event)">
+          <i class="fas fa-chalkboard-teacher"></i> Teaching &amp; More
         </button>
         <button class="tab-button" onclick="switchTab('contact', event)">
           <i class="fas fa-envelope"></i> Contact
@@ -828,6 +873,199 @@ Instructions:
         <li>Bioinformatics Italian Society (BITS) (2023 – Present)</li>
         <li>Young-InfoLife (CINI) (2023 – Present)</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- Activities: Courses, Posters, Talks, Workshops -->
+  <section id="activities" class="scroll-fade-in">
+    <div class="container">
+      <h2 class="section-title">Activities</h2>
+
+      <!-- Professional Courses -->
+      <h4 class="subsection-title mt-5">
+        <i class="fas fa-graduation-cap"></i> Professional Courses
+      </h4>
+      <div class="timeline">
+        <div class="mb-4">
+          <h5 class="fw-semibold">scRNA-seq hands-on course</h5>
+          <span class="text-muted">26/09/2023 – 29/09/2023</span>
+          <p class="mb-0 mt-1">Università degli studi di Torino, Dip. di Biotecnologie e Scienze per la Salute</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">10x single cell RNA Seq Analysis</h5>
+          <span class="text-muted">01/12/2021</span>
+          <p class="mb-0 mt-1">Babraham Institute</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">Data Science: Machine Learning and its Application in Cancer Genomics</h5>
+          <span class="text-muted">06/09/2021 – 17/09/2021</span>
+          <p class="mb-0 mt-1">The Intensive School for Advanced Graduate Studies (ISAGS)</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">Analisi dei dati NGS ed applicazioni in ambito diagnostico</h5>
+          <span class="text-muted">08/03/2021 – 11/03/2021</span>
+          <p class="mb-0 mt-1">Università di Pavia</p>
+        </div>
+      </div>
+
+      <!-- Poster -->
+      <h4 class="subsection-title mt-5">
+        <i class="fas fa-image"></i> Poster
+      </h4>
+      <div class="publication-card">
+        <h5>H19 overexpression drives an inflammatory response in mice</h5>
+        <div class="authors">Del Prete R, <strong>Cecere F</strong>, Sparago A, Pignata L, Cerrato F, Riccio A.</div>
+        <div class="journal-info">Genomic Imprinting – from Biology to Disease, Virtual Conference, 2020</div>
+      </div>
+      <div class="publication-card">
+        <h5>Novel pathogenic variants associated with the imprinting disorders Beckwith-Wiedemann syndrome and Silver-Russell syndrome</h5>
+        <div class="authors">Pignata L, Verma A, <strong>Cecere F</strong>, Giaccari C, Hay Mele B, Acurzio B, Saadat A, Angelini C, Sparago A, Cerrato F, Cubellis MV, Riccio A.</div>
+        <div class="journal-info">XXIV Congresso Nazionale SIGU 2021, Virtual Edition, 2021</div>
+      </div>
+      <div class="publication-card">
+        <h5>Recent advances in the genetics of multi-locus methylation disturbances in the Beckwith-Wiedemann syndrome</h5>
+        <div class="authors">Riccio A, Pignata L, <strong>Cecere F</strong>, Verma A, Hay Mele B, Monticelli M, Acurzio B, Giaccari C, Sparago A, Palumbo O, Carella M, Prontera P, Piscopo C, Accadia M, Cubellis MV, Cerrato F.</div>
+        <div class="journal-info">XXV Congresso Nazionale SIGU 2022, Trieste, 2022</div>
+      </div>
+      <div class="publication-card">
+        <h5>Prioritization and characterization of genetic variants in Beckwith-Wiedemann syndrome patients with multi-locus imprinting disturbances (MLID)</h5>
+        <div class="authors"><strong>Cecere F</strong>, Hay Mele B, Pignata L, Patalan M, Lapunzina P, Mackay D, Cubellis MV, Cerrato F, Riccio A.</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+      </div>
+      <div class="publication-card">
+        <h5>Molecular analysis of a mouse line carrying a hypomorphic variant of the maternal-effect gene Padi6</h5>
+        <div class="authors">Giaccari C, <strong>Cecere F</strong>, Argenziano L, Acampora D, Cecconi S, Rossi G, Galvao A, Andrews S, Kelsey G, Riccio A.</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+      </div>
+      <div class="publication-card">
+        <h5>Screening for genomic imprinting modifiers in humans reveals a role for several epigenetic regulator genes</h5>
+        <div class="authors">Relator R, Verma A, McConkey H, Pignata L, D'Angelo E, <strong>Cecere F</strong>, Cuomo M, Chiariotti L, Scala I, Cerrato F, Sadikovic B, Riccio A.</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+      </div>
+      <div class="publication-card">
+        <h5>A new possible molecular mechanism involved in Silver-Russell Syndrome</h5>
+        <div class="authors">Pignata L, D'Angelo E, <strong>Cecere F</strong>, Sparago A, Cerrato F, Riccio A.</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+      </div>
+      <div class="publication-card">
+        <h5>Distinct profiles of epigenetic alterations are associated with Chr11p15.5 molecular defects in Wilms tumor</h5>
+        <div class="authors">Saadat A, <strong>Cecere F</strong>, Pignata L, Hay Mele B, De Alava E, Roma J, Verde G, Cerrato F, Riccio A, Sparago A.</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+      </div>
+      <div class="publication-card">
+        <h5>Co-occurrence of Beckwith-Wiedemann Syndrome and early-onset colorectal cancer</h5>
+        <div class="authors"><strong>Cecere F</strong>, Pignata L, Saadat A, D'Angelo E, Hay Mele B, Palumbo O, Palumbo P, Carella M, Scarano G, Rossi GB, Angelini C, Sparago A, Riccio A, Cerrato F.</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+      </div>
+      <div class="publication-card">
+        <h5>GIMP - A Comprehensive R package for exploring Genomic Imprinting Methylation Patterns in Imprinting Disorders</h5>
+        <div class="authors"><strong>Francesco Cecere</strong>, Abu Saadat, Andrea Riccio, Claudia Angelini</div>
+        <div class="journal-info">BBCC 2024, 27–29 November 2024</div>
+        <div class="publication-tags">
+          <span class="publication-tag" style="background: #d4a017;">&#127942; Best Poster Award</span>
+        </div>
+      </div>
+
+      <!-- Talk -->
+      <h4 class="subsection-title mt-5">
+        <i class="fas fa-microphone-alt"></i> Talk
+      </h4>
+      <div class="publication-card">
+        <h5>scGraphVerse: A Unified Framework for Network Inference, Evaluation, and Visualization from Single-Cell Gene Expression Data</h5>
+        <div class="journal-info">Bioinformatics Italian Society (BITS 2025)</div>
+      </div>
+      <div class="publication-card">
+        <h5>scGraphVerse: An R package for Inferring and Integrating Single-Cell Gene Regulatory Networks</h5>
+        <div class="journal-info">Bioinformatics and Computational Biology Conference (BBCC 2025)</div>
+      </div>
+
+      <!-- Workshop -->
+      <h4 class="subsection-title mt-5">
+        <i class="fas fa-tools"></i> Workshop
+      </h4>
+      <div class="timeline">
+        <div class="mb-4">
+          <h5 class="fw-semibold">From raw matrices to differential expression/methylation patterns: a functional genomics approach to detect molecular insights</h5>
+          <span class="text-muted">25/11/2024</span>
+          <p class="mt-1 mb-1">Instructors and Organizers: Dr. Luca Ambrosino and <strong>Dr. Francesco Cecere</strong></p>
+          <p class="mb-0">Institute of Genetics and Biophysics "Adriano Buzzati-Traverso", Consiglio Nazionale delle Ricerche, Naples, Italy</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">R frameworks for single cell data analysis</h5>
+          <span class="text-muted">07/12/2023</span>
+          <p class="mt-1 mb-1">BBCC Tutorial – scRNA-seq data analysis using R, from raw counts to cell clustering.</p>
+          <p class="mb-0">Instructors: Prof. Annamaria Carissimo (IAC/CNR), Dr. Dario Righelli (Univ. Padova), Dr. Valeria Policastro (Univ. Federico II Naples), <strong>Dr. Francesco Cecere</strong> (DiSTABiF, Univ. Campania "Luigi Vanvitelli")</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">NGS - DNA methylation analysis</h5>
+          <span class="text-muted">16/12/2022 – 25/12/2022</span>
+          <p class="mb-0 mt-1">Virtual Workshop</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Teaching, Awards & Packages -->
+  <section id="teaching" class="bg-light scroll-fade-in">
+    <div class="container">
+      <h2 class="section-title">Teaching, Awards &amp; Packages</h2>
+
+      <!-- Teaching -->
+      <h4 class="subsection-title mt-5">
+        <i class="fas fa-chalkboard-teacher"></i> Teaching
+      </h4>
+      <div class="timeline">
+        <div class="mb-4">
+          <h5 class="fw-semibold">Contract Professor in Bioinformatics (BIO/18)</h5>
+          <span class="text-muted">20/10/2025 – Present</span>
+          <p class="mb-0 mt-1">Prot. N. 162103 del 15/09/2025 – Repertorio DDMF N. 173/2025</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">Tutor in Genetics</h5>
+          <span class="text-muted">2022</span>
+          <p class="mt-1 mb-1">D.D n. 242/2022 prot. n. 81546 del 1/06/22 – CdL Biotecnologie</p>
+          <p class="mb-0">Tutor in Genetics for students with disabilities – D.D n. 280 del 23/06/22 – CdL Scienze Ambientali</p>
+        </div>
+      </div>
+
+      <!-- Award -->
+      <h4 class="subsection-title mt-5">
+        <i class="fas fa-trophy"></i> Awards
+      </h4>
+      <div class="award-card">
+        <i class="fas fa-trophy fa-3x mb-3" style="opacity: 0.9;"></i>
+        <h4 class="fw-bold">BBCC 2024 – Best Poster Presentation</h4>
+        <p class="mb-0">GIMP - A Comprehensive R package for exploring Genomic Imprinting Methylation Patterns in Imprinting Disorders</p>
+      </div>
+
+      <!-- Packages -->
+      <h4 class="subsection-title mt-5">
+        <i class="fas fa-cube"></i> Packages
+      </h4>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="package-card">
+            <h5 class="fw-bold" style="color: var(--accent-color);">GIMP</h5>
+            <p class="text-muted mb-2">Genomic Imprinting Methylation Patterns</p>
+            <p>An R package for exploring genomic imprinting methylation patterns in imprinting disorders, providing comprehensive tools for analysis and visualization.</p>
+            <a href="https://github.com/ngsFC/GIMP" target="_blank" class="btn-social btn-github" style="display: inline-flex; text-decoration: none;">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="package-card">
+            <h5 class="fw-bold" style="color: var(--accent-color);">scGraphVerse</h5>
+            <p class="text-muted mb-2">Single-Cell Gene Regulatory Network Analysis</p>
+            <p>A comprehensive R package for inferring, evaluating, and visualizing gene regulatory networks (GRNs) from single-cell RNA sequencing data, with multiple inference algorithms, consensus construction, and rich visualizations.</p>
+            <a href="https://github.com/ngsFC/scGraphVerse" target="_blank" class="btn-social btn-github" style="display: inline-flex; text-decoration: none;">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
