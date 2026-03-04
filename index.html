@@ -619,6 +619,31 @@ Instructions:
       margin-bottom: 1.5rem;
     }
 
+    .poster-title {
+      cursor: pointer;
+      color: var(--accent-color);
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .poster-title:hover {
+      color: var(--accent-hover);
+    }
+
+    .poster-toggle-icon {
+      font-size: 0.8rem;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .poster-embed {
+      display: none;
+      margin-bottom: 1rem;
+    }
+
     @media (max-width: 768px) {
       .info-cards {
         flex-direction: column;
@@ -723,6 +748,11 @@ Instructions:
       <!-- Main Title -->
       <h1 class="display-3 fw-bold mb-3">Francesco Cecere</h1>
       <p class="lead mb-4">Biologist & Bioinformatician</p>
+      <div style="margin-top: 1.5rem;">
+        <button onclick="downloadCV()" id="downloadBtn" class="btn-social" style="background: var(--accent-color); color: white; border-color: var(--accent-color); cursor: pointer; font-size: 1rem;">
+          <i class="fas fa-file-download"></i> Download CV
+        </button>
+      </div>
     </div>
   </section>
 
@@ -913,57 +943,127 @@ Instructions:
         <i class="fas fa-image"></i> Poster
       </h4>
       <div class="publication-card">
-        <h5>H19 overexpression drives an inflammatory response in mice</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          H19 overexpression drives an inflammatory response in mice
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_01_H19_2020.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors">Del Prete R, <strong>Cecere F</strong>, Sparago A, Pignata L, Cerrato F, Riccio A.</div>
-        <div class="journal-info">Genomic Imprinting – from Biology to Disease, Virtual Conference, 2020</div>
+        <div class="journal-info">Genomic Imprinting – from Biology to Disease, Virtual Conference, 28/09/2020 – 01/10/2020</div>
       </div>
       <div class="publication-card">
-        <h5>Novel pathogenic variants associated with the imprinting disorders Beckwith-Wiedemann syndrome and Silver-Russell syndrome</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          Novel pathogenic variants associated with the imprinting disorders Beckwith-Wiedemann syndrome and Silver-Russell syndrome
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_02_SIGU_2021.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors">Pignata L, Verma A, <strong>Cecere F</strong>, Giaccari C, Hay Mele B, Acurzio B, Saadat A, Angelini C, Sparago A, Cerrato F, Cubellis MV, Riccio A.</div>
         <div class="journal-info">XXIV Congresso Nazionale SIGU 2021, Virtual Edition, 2021</div>
       </div>
       <div class="publication-card">
-        <h5>Recent advances in the genetics of multi-locus methylation disturbances in the Beckwith-Wiedemann syndrome</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          Recent advances in the genetics of multi-locus methylation disturbances in the Beckwith-Wiedemann syndrome
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_03_SIGU_2022.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors">Riccio A, Pignata L, <strong>Cecere F</strong>, Verma A, Hay Mele B, Monticelli M, Acurzio B, Giaccari C, Sparago A, Palumbo O, Carella M, Prontera P, Piscopo C, Accadia M, Cubellis MV, Cerrato F.</div>
         <div class="journal-info">XXV Congresso Nazionale SIGU 2022, Trieste, 2022</div>
       </div>
       <div class="publication-card">
-        <h5>Prioritization and characterization of genetic variants in Beckwith-Wiedemann syndrome patients with multi-locus imprinting disturbances (MLID)</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          Prioritization and characterization of genetic variants in Beckwith-Wiedemann syndrome patients with multi-locus imprinting disturbances (MLID)
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_04_MLID_2023.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors"><strong>Cecere F</strong>, Hay Mele B, Pignata L, Patalan M, Lapunzina P, Mackay D, Cubellis MV, Cerrato F, Riccio A.</div>
-        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 22/03/2023 – 24/03/2023</div>
       </div>
       <div class="publication-card">
-        <h5>Molecular analysis of a mouse line carrying a hypomorphic variant of the maternal-effect gene Padi6</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          Molecular analysis of a mouse line carrying a hypomorphic variant of the maternal-effect gene Padi6
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_05_Padi6_2023.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors">Giaccari C, <strong>Cecere F</strong>, Argenziano L, Acampora D, Cecconi S, Rossi G, Galvao A, Andrews S, Kelsey G, Riccio A.</div>
-        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 22/03/2023 – 24/03/2023</div>
       </div>
       <div class="publication-card">
-        <h5>Screening for genomic imprinting modifiers in humans reveals a role for several epigenetic regulator genes</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          Screening for genomic imprinting modifiers in humans reveals a role for several epigenetic regulator genes
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_06_Modifiers_2023.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors">Relator R, Verma A, McConkey H, Pignata L, D'Angelo E, <strong>Cecere F</strong>, Cuomo M, Chiariotti L, Scala I, Cerrato F, Sadikovic B, Riccio A.</div>
-        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 22/03/2023 – 24/03/2023</div>
       </div>
       <div class="publication-card">
-        <h5>A new possible molecular mechanism involved in Silver-Russell Syndrome</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          A new possible molecular mechanism involved in Silver-Russell Syndrome
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_07_SRS_2023.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors">Pignata L, D'Angelo E, <strong>Cecere F</strong>, Sparago A, Cerrato F, Riccio A.</div>
-        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 22/03/2023 – 24/03/2023</div>
       </div>
       <div class="publication-card">
-        <h5>Distinct profiles of epigenetic alterations are associated with Chr11p15.5 molecular defects in Wilms tumor</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          Distinct profiles of epigenetic alterations are associated with Chr11p15.5 molecular defects in Wilms tumor
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_08_Wilms_2023.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors">Saadat A, <strong>Cecere F</strong>, Pignata L, Hay Mele B, De Alava E, Roma J, Verde G, Cerrato F, Riccio A, Sparago A.</div>
-        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 22/03/2023 – 24/03/2023</div>
       </div>
       <div class="publication-card">
-        <h5>Co-occurrence of Beckwith-Wiedemann Syndrome and early-onset colorectal cancer</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          Co-occurrence of Beckwith-Wiedemann Syndrome and early-onset colorectal cancer
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_09_BWS_CRC_2023.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors"><strong>Cecere F</strong>, Pignata L, Saadat A, D'Angelo E, Hay Mele B, Palumbo O, Palumbo P, Carella M, Scarano G, Rossi GB, Angelini C, Sparago A, Riccio A, Cerrato F.</div>
-        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 2023</div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 22/03/2023 – 24/03/2023</div>
       </div>
       <div class="publication-card">
-        <h5>GIMP - A Comprehensive R package for exploring Genomic Imprinting Methylation Patterns in Imprinting Disorders</h5>
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          GIMP - A Comprehensive R package for exploring Genomic Imprinting Methylation Patterns in Imprinting Disorders
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_10_GIMP_2024.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
         <div class="authors"><strong>Francesco Cecere</strong>, Abu Saadat, Andrea Riccio, Claudia Angelini</div>
         <div class="journal-info">BBCC 2024, 27–29 November 2024</div>
         <div class="publication-tags">
           <span class="publication-tag" style="background: #d4a017;">&#127942; Best Poster Award</span>
         </div>
+      </div>
+      <div class="publication-card">
+        <h5 class="poster-title" onclick="togglePoster(this)">
+          <i class="fas fa-chevron-right poster-toggle-icon"></i>
+          Screening for modifiers of genomic imprinting in human blood reveals a role for several genetic and non-genetic factors
+        </h5>
+        <div class="poster-embed">
+          <embed src="assets/posters/poster_11_Modifiers_2025.pdf" type="application/pdf" width="100%" height="600px" style="border-radius:8px;">
+        </div>
+        <div class="journal-info">Genomic Imprinting – From Biology to Disease, Wellcome Genome Campus, UK, 10/03/2025 – 12/03/2025</div>
       </div>
 
       <!-- Talk -->
@@ -972,7 +1072,7 @@ Instructions:
       </h4>
       <div class="publication-card">
         <h5>scGraphVerse: A Unified Framework for Network Inference, Evaluation, and Visualization from Single-Cell Gene Expression Data</h5>
-        <div class="journal-info">Bioinformatics Italian Society (BITS 2025)</div>
+        <div class="journal-info">Bioinformatics Italian Society (BITS 2025), 11/06/2025 – 13/06/2025</div>
       </div>
       <div class="publication-card">
         <h5>scGraphVerse: An R package for Inferring and Integrating Single-Cell Gene Regulatory Networks</h5>
@@ -1022,10 +1122,29 @@ Instructions:
           <p class="mb-0 mt-1">Prot. N. 162103 del 15/09/2025 – Repertorio DDMF N. 173/2025</p>
         </div>
         <div class="mb-4">
+          <h5 class="fw-semibold">Lecturer – Molecular Biology for Master's students in "Statistical Sciences for Decision Making"</h5>
+          <span class="text-muted">19/09/2025 | Università Federico II, Naples</span>
+          <p class="mb-0 mt-1">4 hours</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">Lecturer – Bioinformatics (Molecular Genetics course, Master's degree in Biologia)</h5>
+          <span class="text-muted">05/12/2024 – 11/12/2024 | Università degli Studi della Campania "Luigi Vanvitelli", Caserta</span>
+          <p class="mb-0 mt-1">Two lectures, 5 hours total</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">Lecturer – Molecular Biology for Master's students in "Statistical Sciences for Decision Making"</h5>
+          <span class="text-muted">26/09/2024 – 30/09/2024 | Università Federico II, Naples</span>
+          <p class="mb-0 mt-1">4 hours</p>
+        </div>
+        <div class="mb-4">
           <h5 class="fw-semibold">Tutor in Genetics</h5>
           <span class="text-muted">2022</span>
-          <p class="mt-1 mb-1">D.D n. 242/2022 prot. n. 81546 del 1/06/22 – CdL Biotecnologie</p>
-          <p class="mb-0">Tutor in Genetics for students with disabilities – D.D n. 280 del 23/06/22 – CdL Scienze Ambientali</p>
+          <p class="mb-0 mt-1">D.D n. 242/2022 prot. n. 81546 del 1/06/22 – CdL Biotecnologie</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">Tutor in Genetics for students with disabilities</h5>
+          <span class="text-muted">2022</span>
+          <p class="mb-0 mt-1">D.D n. 280 del 23/06/22 – CdL Scienze Ambientali</p>
         </div>
       </div>
 
@@ -1116,8 +1235,40 @@ Instructions:
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <script>
+    // CV Download
+    function downloadCV() {
+      const btn = document.getElementById('downloadBtn');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+      btn.disabled = true;
+      const element = document.getElementById('cv-template');
+      element.style.display = 'block';
+      const opt = {
+        margin: 0,
+        filename: 'Francesco_Cecere_CV.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'] }
+      };
+      html2pdf().set(opt).from(element).save().then(() => {
+        element.style.display = 'none';
+        btn.innerHTML = '<i class="fas fa-file-download"></i> Download CV';
+        btn.disabled = false;
+      });
+    }
+
+    // Poster toggle
+    function togglePoster(titleEl) {
+      const embedDiv = titleEl.nextElementSibling;
+      const icon = titleEl.querySelector('.poster-toggle-icon');
+      const isOpen = embedDiv.style.display === 'block';
+      embedDiv.style.display = isOpen ? 'none' : 'block';
+      icon.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+    }
+
     // Tab Switching Function
     function switchTab(tabId, event) {
       // Remove active class from all tabs and sections
@@ -1488,6 +1639,361 @@ Instructions:
       }
     };
   </script>
+
+  <!-- ========== CV TEMPLATE FOR PDF DOWNLOAD ========== -->
+  <div id="cv-template" style="display:none; font-family: Arial, Helvetica, sans-serif; width: 210mm; background: white; color: #2c2c2c; font-size: 10.5px; line-height: 1.5;">
+
+    <!-- HEADER -->
+    <table style="width:100%; background:#327c88; padding:22px 28px 18px 28px; border-collapse:collapse;">
+      <tr>
+        <td style="width:95px; vertical-align:middle;">
+          <img src="https://github.com/ngsFC.png" crossorigin="anonymous" width="85" height="85" style="border-radius:50%; border:2px solid rgba(255,255,255,0.85); object-fit:cover; display:block;">
+        </td>
+        <td style="vertical-align:middle; padding-left:18px;">
+          <div style="font-size:24px; font-weight:bold; color:white; margin-bottom:3px;">Francesco Cecere</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.88); margin-bottom:8px;">Senior Bioinformatic Researcher · Biologist</div>
+          <div style="font-size:9px; color:rgba(255,255,255,0.82);">
+            ✉ francesco.cecerengs@gmail.com &nbsp;|&nbsp; ☎ +39 3888903265 &nbsp;|&nbsp; 📍 Santa Maria Capua Vetere, Italy<br>
+            🔗 linkedin.com/in/francesco-cecere-5b5778199 &nbsp;|&nbsp; github.com/ngsFC &nbsp;|&nbsp; x.com/FcecereNGS
+          </div>
+        </td>
+        <td style="vertical-align:top; text-align:right; padding-right:4px;">
+          <div style="font-size:8.5px; color:rgba(255,255,255,0.7);">Born: 22/09/1995</div>
+          <div style="font-size:8.5px; color:rgba(255,255,255,0.7);">Nationality: Italian</div>
+        </td>
+      </tr>
+    </table>
+
+    <div style="padding:18px 28px;">
+
+      <!-- PROFESSIONAL PROFILE -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">PROFESSIONAL PROFILE</div>
+        <p style="margin:0; font-size:10px; text-align:justify; color:#333;">I am Francesco Cecere, a Biologist with a deep-rooted interest in Genomics and Bioinformatics. With experience in both rare genetic syndromes (Beckwith-Wiedemann and Silver-Russell syndromes) and pediatric cancer (Wilms tumor), I have developed a strong foundation in translational research. My work primarily focuses on gene regulatory networks, leveraging advanced Bioinformatics techniques to analyze Genomics data. This passion drives my dedication to scientific innovation and my commitment to applying expertise for the advancement of health and science.</p>
+      </div>
+
+      <!-- WORK EXPERIENCE -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">WORK EXPERIENCE</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/12/2025 – Present</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Senior Bioinformatic Researcher</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">AORN Santobono-Pausilipon, Naples, Italy</div>
+            <div style="font-size:9.5px; color:#444;">"Progetto PNC-E3-2022-23683269 Hub Life Science-Terapia Avanzata (HLS-TA)" · Delibera n. 761 del 07/11/2025 · CUP: H63C22000650001</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">26/08/2024 – 25/08/2025</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Researcher III Level</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">IGB – CNR "Adriano Buzzati-Traverso", Naples, Italy</div>
+            <div style="font-size:9.5px; color:#444;">Project: "National Centre for HPC, Big Data and Quantum Computing" · Development and testing of algorithms for the reconstruction of gene regulatory networks from single-cell transcriptomic data. Bando n. 400.5 IGB PNRR.</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">02/2023 – 08/2024</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Postdoc Researcher</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+            <div style="font-size:9.5px; color:#444;">D.R. n. 1018 · Study of methylation and gene expression profiles of imprinted genes in Wilms tumor · EPIC methylation array, RNA-seq, Exome-seq.</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">05/2023 – 07/2023</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Visiting Postdoc</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">Josep Carreras Leukaemia Research Institute, Badalona, Spain</div>
+            <div style="font-size:9.5px; color:#444;">Multi-omic integration of clinical, genetic and epigenetic data from Wilms tumor patients (Dr. Esteller's group) · EPIC array, RNA-seq, Exome-seq.</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">07/2022</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Visiting Student</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">Babraham Institute, Cambridge, UK</div>
+            <div style="font-size:9.5px; color:#444;">Analysis and multi-omics integration of BS-seq and scRNA-seq data from germ cells · Collaboration with Dr. Kelsey and Dr. Andrews.</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/11/2019 – 31/01/2023</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">PhD Student in Molecular Life Sciences (SSD: BIO/18)</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+            <div style="font-size:9.5px; color:#444;">Analysis of RNA-seq, Exome-seq, RRBS, BS-seq, ChIP-seq data from human cells and mouse lines · Research on imprinting disorders (BWS, SRS) · Decreto Prot. n. 76400.</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- EDUCATION -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">EDUCATION AND TRAINING</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/11/2019 – 31/01/2023</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">PhD in Molecular Life Sciences (SSD: BIO/18)</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+            <div style="font-size:9.5px; color:#444;">Thesis: "Investigating the causes of DNA methylation disturbances in Imprinting Disorders" · Evaluation: Excellent</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2017 – 24/07/2019</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Master's Degree in Molecular Biology</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+            <div style="font-size:9.5px; color:#444;">Final grade: 110/110 cum laude · Thesis: "Identificazione di nuovi fattori trascrizionali che legano le regioni di controllo dell'imprinting"</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2013 – 27/10/2017</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Bachelor's Degree in Biological Sciences</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+            <div style="font-size:9.5px; color:#444;">Final grade: 110/110 cum laude · Thesis: "Effetti neuropatologici dell'abuso di alcol associati a carenza di Tiamina"</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- SKILLS -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">SKILLS</div>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr>
+            <td style="width:128px; font-weight:bold; font-size:9.5px; color:#444; padding-right:10px; vertical-align:top; padding-bottom:5px;">Bioinformatics</td>
+            <td style="font-size:9.5px; color:#333; padding-bottom:5px;">RNA-seq · Exome and WGS · RRBS and BS-seq · Methylation Array · miRNA-seq · Single-cell analysis · SNPs array · Gene Regulatory Network</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; font-size:9.5px; color:#444; padding-right:10px; vertical-align:top; padding-bottom:5px;">Programming</td>
+            <td style="font-size:9.5px; color:#333; padding-bottom:5px;">Nextflow · Linux/Bash · Python · R · AWK · ShinyApp</td>
+          </tr>
+          <tr>
+            <td style="font-weight:bold; font-size:9.5px; color:#444; padding-right:10px; vertical-align:top;">Languages</td>
+            <td style="font-size:9.5px; color:#333;">Italian (mother tongue) · English C1 (Listening, Reading, Writing, Spoken Production, Spoken Interaction)</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- PAGE BREAK -->
+      <div style="page-break-before:always;"></div>
+
+      <!-- PUBLICATIONS -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">PUBLICATIONS</div>
+        <div style="font-size:9.5px; line-height:1.6; color:#333;">
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>D'Angelo E, Mandrile G, Tesio N, <strong>Cecere F</strong>, et al. Adult-Onset β-Thalassemia Major as Acquired Imprinting Disorder. <em>Am J Hematol</em>, 101(3):633–638. https://doi.org/10.1002/ajh.70177</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Givol O, Han IS, <strong>Cecere F</strong>, et al. Missense substitutions in the BTB domain of ZBTB24 can lead to protein instability and cause ICF2 syndrome. <em>Hum Mol Genet</em>, 35(2):ddaf182. https://doi.org/10.1093/hmg/ddaf182</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span>D'Angelo E, Pignata L, <strong>Cecere F</strong>, et al. Hypomethylation of the MEG8:Int2-DMR in patients with pathogenic PLAG1 variants. <em>Clin Epigenetics</em>, 18(1):2. https://doi.org/10.1186/s13148-025-02024-6</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span><strong>Cecere F</strong>, Pignata L, D'Angelo E, et al. Highly variable genomic methylation in the Beckwith-Wiedemann syndrome associated with multi-locus imprinting disturbances. <em>Clin Epigenetics</em>, 17(1):160. https://doi.org/10.1186/s13148-025-01971-4</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span>Del Bene M, Diana A, Corsello A, <strong>Cecere F</strong>, et al. New generation of paediatricians in the health care system. <em>BMJ Open</em>, 15(7):e097799. https://doi.org/10.1136/bmjopen-2024-097799</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span><strong>Cecere F</strong>, Relator R, Levy M, et al. Identification of genetic and non-genetic modifiers of genomic imprinting. <em>Epigenetics Chromatin</em>, 18(1):47. https://doi.org/10.1186/s13072-025-00612-7</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span>Benedetti C, Giaccari C, <strong>Cecere F</strong>, et al. Single-cell multiomic analysis reveals methylome and transcriptome deviations following oocyte maturation in vitro. <em>Reproduction</em>. https://doi.org/10.1530/REP-25-0011</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2024</span>Giaccari C, <strong>Cecere F</strong>, Argenziano L, et al. New insights into oocyte cytoplasmic lattice-associated proteins. <em>Trends Genet</em>. https://doi.org/10.1016/j.tig.2024.06.002</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2024</span>Lullo V, <strong>Cecere F</strong>, Batti S, et al. A novel iPSC-based model of ICF syndrome subtype 2 recapitulates the molecular phenotype of ZBTB24 deficiency. <em>Front Immunol</em>, 15:1419748.</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2024</span>Cillo F, Coppola E, Habetswallner F, <strong>Cecere F</strong>, et al. Understanding the Variability of 22q11.2 Deletion Syndrome: The Role of Epigenetic Factors. <em>Genes</em>, 15(3):321. https://doi.org/10.3390/genes15030321</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2024</span>Giaccari C, <strong>Cecere F</strong>, et al. A maternal-effect Padi6 variant causes nuclear and cytoplasmic abnormalities in oocytes. <em>Genes Dev</em>, 38(3-4):131–150. https://doi.org/10.1101/gad.351238.123</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2023</span>Verma A, Poondi Krishnan V, <strong>Cecere F</strong>, et al. ICF1-Syndrome-Associated DNMT3B Mutations Prevent De Novo Methylation at a Subset of Imprinted Loci during iPSC Reprogramming. <em>Biomolecules</em>, 13(12):1717. https://doi.org/10.3390/biom13121717</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2023</span>Pignata L, <strong>Cecere F</strong>, Acquaviva F, et al. Co-occurrence of Beckwith-Wiedemann syndrome and pseudohypoparathyroidism type 1B. <em>Front Cell Dev Biol</em>, 11:1237629. https://doi.org/10.3389/fcell.2023.1237629</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2023</span><strong>Cecere F</strong>, Pignata L, Hay Mele B, et al. Co-Occurrence of Beckwith-Wiedemann Syndrome and Early-Onset Colorectal Cancer. <em>Cancers</em>, 15(7):1944. https://doi.org/10.3390/cancers15071944</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2022</span>Pignata L*, <strong>Cecere F*</strong>, Verma A, et al. Novel genetic variants of KHDC3L and other members of the subcortical maternal complex. <em>Clin Epigenetics</em>, 14(1):71. https://doi.org/10.1186/s13148-022-01292-w <em>(*co-first author)</em></p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2022</span>Passaretti F, Pignata L, Vitiello G, <strong>Cecere F</strong>, et al. Different Mechanisms Cause Hypomethylation of Both H19 and KCNQ1OT1. <em>Genes</em>, 13(10):1875. https://doi.org/10.3390/genes13101875</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2022</span>Acurzio B*, <strong>Cecere F*</strong>, Giaccari C, et al. The mismatch-repair proteins MSH2 and MSH6 interact with the imprinting control regions through ZFP57-KAP1. <em>Epigenetics Chromatin</em>, 15(1):27. https://doi.org/10.1186/s13072-022-00462-7 <em>(*co-first author)</em></p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2021</span>Freschi A, Del Prete R, Pignata L, <strong>Cecere F</strong>, et al. The number of CTCF binding sites of the H19/IGF2:IG-DMR correlates with DNA methylation and expression imprinting. <em>Hum Mol Genet</em>. https://doi.org/10.1093/hmg/ddab132</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2021</span>Acurzio B, Verma A, Polito A, Giaccari C, <strong>Cecere F</strong>, et al. Zfp57 inactivation illustrates the role of ICR methylation in imprinted gene expression during neural differentiation of mouse ESCs. <em>Sci Rep</em>, 11(1):13802. https://doi.org/10.1038/s41598-021-93297-3</p>
+          <p style="margin:0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2021</span>Russo R, Russo V, <strong>Cecere F</strong>, et al. ZBTB2 protein is a new partner of the Nucleosome Remodeling and Deacetylase (NuRD) complex. <em>Int J Biol Macromol</em>, 168:67–76. https://doi.org/10.1016/j.ijbiomac.2020.12.029</p>
+        </div>
+      </div>
+
+      <!-- PAGE BREAK -->
+      <div style="page-break-before:always;"></div>
+
+      <!-- TEACHING -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">TEACHING</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">20/10/2025 – Present</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Contract Professor in Bioinformatics (BIO/18)</div>
+            <div style="font-size:9.5px; color:#444;">Prot. N. 162103 del 15/09/2025 – Repertorio DDMF N. 173/2025</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">19/09/2025</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Lecturer – Molecular Biology for Master's students in "Statistical Sciences for Decision Making"</div>
+            <div style="font-size:9.5px; color:#444;">Università Federico II, Naples · 4 hours</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">05/12/2024 – 11/12/2024</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Lecturer – Bioinformatics (Molecular Genetics course, Master's in Biologia)</div>
+            <div style="font-size:9.5px; color:#444;">Università degli Studi della Campania "Luigi Vanvitelli", Caserta · Two lectures, 5 hours</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">26/09/2024 – 30/09/2024</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Lecturer – Molecular Biology for Master's students in "Statistical Sciences for Decision Making"</div>
+            <div style="font-size:9.5px; color:#444;">Università Federico II, Naples · 4 hours</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2022</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Tutor in Genetics</div>
+            <div style="font-size:9.5px; color:#444;">D.D n. 242/2022 prot. n. 81546 del 1/06/22 – CdL Biotecnologie</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2022</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Tutor in Genetics for students with disabilities</div>
+            <div style="font-size:9.5px; color:#444;">D.D n. 280 del 23/06/22 – CdL Scienze Ambientali</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- PROFESSIONAL COURSES -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">PROFESSIONAL COURSES</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">26/09/2023 – 29/09/2023</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">scRNA-seq hands-on course</div>
+            <div style="font-size:9.5px; color:#444;">Università degli studi di Torino, Dip. di Biotecnologie e Scienze per la Salute · 24 hours</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/12/2021</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">10x single cell RNA Seq Analysis</div>
+            <div style="font-size:9.5px; color:#444;">Babraham Institute, Cambridge, UK · 8 hours</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">06/09/2021 – 17/09/2021</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Data Science: Machine Learning and its Application in Cancer Genomics</div>
+            <div style="font-size:9.5px; color:#444;">The Intensive School for Advanced Graduate Studies (ISAGS) · 30 hours</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">08/03/2021 – 11/03/2021</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Analisi dei dati NGS ed applicazioni in ambito diagnostico</div>
+            <div style="font-size:9.5px; color:#444;">Università di Pavia · 16 hours</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- TALKS -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">TALKS</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">11/06/2025 – 13/06/2025</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">scGraphVerse: A Unified Framework for Network Inference, Evaluation, and Visualization from Single-Cell Gene Expression Data</div>
+            <div style="font-size:9.5px; color:#444;">Bioinformatics Italian Society (BITS 2025), Naples</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2025</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">scGraphVerse: An R package for Inferring and Integrating Single-Cell Gene Regulatory Networks</div>
+            <div style="font-size:9.5px; color:#444;">Bioinformatics and Computational Biology Conference (BBCC 2025)</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- WORKSHOPS -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">WORKSHOPS</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">25/11/2024</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">From raw matrices to differential expression/methylation patterns: a functional genomics approach to detect molecular insights</div>
+            <div style="font-size:9.5px; color:#444;">BBCC 2024 · IGB-CNR, Naples · Instructor and Organizer (with Dr. Luca Ambrosino) · 8 hours</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">07/12/2023</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">R frameworks for single cell data analysis</div>
+            <div style="font-size:9.5px; color:#444;">BBCC 2023 Tutorial, Naples · Instructor (with Carissimo, Righelli, Policastro) · 6 hours</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">16/12/2022 – 25/12/2022</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">NGS - DNA methylation analysis</div>
+            <div style="font-size:9.5px; color:#444;">Virtual Workshop</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- POSTERS -->
+      <div style="margin-bottom:16px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">POSTER PRESENTATIONS</div>
+        <div style="font-size:9.5px; line-height:1.6; color:#333;">
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2025 ·</span> <strong>Cecere F</strong>, et al. Screening for modifiers of genomic imprinting in human blood reveals a role for several genetic and non-genetic factors. <em>Genomic Imprinting – From Biology to Disease</em>, Wellcome Genome Campus, UK, 10–12/03/2025.</p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2024 ·</span> <strong>Cecere F</strong>, Saadat A, Riccio A, Angelini C. GIMP - A Comprehensive R package for exploring Genomic Imprinting Methylation Patterns in Imprinting Disorders. <em>BBCC 2024</em>, Naples, 27–29/11/2024. 🏆 <strong>Best Poster Award</strong></p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2023 ·</span> <strong>Cecere F</strong>, et al. Prioritization and characterization of genetic variants in BWS patients with MLID. <em>Genomic Imprinting 2023</em>, Wellcome Genome Campus, 22–24/03/2023.</p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2023 ·</span> <strong>Cecere F</strong>, et al. Co-occurrence of Beckwith-Wiedemann Syndrome and early-onset colorectal cancer. <em>Genomic Imprinting 2023</em>, Wellcome Genome Campus, 22–24/03/2023.</p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2023 ·</span> Giaccari C, <strong>Cecere F</strong>, et al. Molecular analysis of a mouse line carrying a hypomorphic variant of Padi6. <em>Genomic Imprinting 2023</em>, Wellcome Genome Campus, 22–24/03/2023.</p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2023 ·</span> Relator R, <strong>Cecere F</strong>, et al. Screening for genomic imprinting modifiers reveals a role for epigenetic regulators. <em>Genomic Imprinting 2023</em>, Wellcome Genome Campus, 22–24/03/2023.</p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2023 ·</span> Pignata L, D'Angelo E, <strong>Cecere F</strong>, et al. A new possible molecular mechanism in Silver-Russell Syndrome. <em>Genomic Imprinting 2023</em>, Wellcome Genome Campus, 22–24/03/2023.</p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2023 ·</span> Saadat A, <strong>Cecere F</strong>, et al. Distinct profiles of epigenetic alterations in Chr11p15.5 defects in Wilms tumor. <em>Genomic Imprinting 2023</em>, Wellcome Genome Campus, 22–24/03/2023.</p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2022 ·</span> Riccio A, Pignata L, <strong>Cecere F</strong>, et al. Recent advances in multi-locus methylation disturbances in BWS. <em>XXV Congresso Nazionale SIGU 2022</em>, Trieste.</p>
+          <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2021 ·</span> Pignata L, <strong>Cecere F</strong>, et al. Novel pathogenic variants in BWS and Silver-Russell syndrome. <em>XXIV Congresso Nazionale SIGU 2021</em>, Virtual.</p>
+          <p style="margin:0;"><span style="color:#327c88; font-weight:bold;">2020 ·</span> Del Prete R, <strong>Cecere F</strong>, et al. H19 overexpression drives an inflammatory response in mice. <em>Genomic Imprinting 2020</em>, Virtual, 28/09–01/10/2020.</p>
+        </div>
+      </div>
+
+      <!-- AWARDS & PACKAGES -->
+      <div style="margin-bottom:16px;">
+        <table style="width:100%; border-collapse:collapse;">
+          <tr>
+            <td style="width:49%; vertical-align:top; padding-right:10px;">
+              <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">AWARDS</div>
+              <div style="border-left:2px solid #327c88; padding-left:10px;">
+                <div style="font-weight:bold; font-size:10.5px;">🏆 BBCC 2024 – Best Poster Presentation</div>
+                <div style="font-size:9.5px; color:#444; margin-top:2px;">GIMP - A Comprehensive R package for exploring Genomic Imprinting Methylation Patterns in Imprinting Disorders</div>
+              </div>
+            </td>
+            <td style="width:2%;"></td>
+            <td style="width:49%; vertical-align:top;">
+              <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">R PACKAGES</div>
+              <div style="border-left:2px solid #327c88; padding-left:10px; font-size:9.5px; color:#333;">
+                <div style="font-weight:bold;">GIMP</div>
+                <div style="color:#444; margin-bottom:4px;">Genomic Imprinting Methylation Patterns · github.com/ngsFC/GIMP</div>
+                <div style="font-weight:bold;">scGraphVerse</div>
+                <div style="color:#444;">GRN inference from scRNA-seq data · github.com/ngsFC/scGraphVerse</div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- MEMBERSHIPS -->
+      <div style="margin-bottom:10px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">NETWORKS AND MEMBERSHIPS</div>
+        <div style="border-left:2px solid #327c88; padding-left:10px; font-size:9.5px; color:#333; line-height:1.8;">
+          Società Italiana di Genetica Umana (SIGU) – Epigenetics GdL, Oct 2024 – Present<br>
+          Bioinformatics ITalian Society (BITS), Apr 2025 – Present<br>
+          Young-InfoLife (CINI), 2023 – Present<br>
+          Telethon Foundation – "Un Assist alla Ricerca" (Volunteer), 2018 – Present
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div style="border-top:1px solid #327c88; margin-top:16px; padding-top:8px; text-align:center; font-size:8.5px; color:#999;">
+        Francesco Cecere · CV generated from ngsfc.github.io
+      </div>
+
+    </div>
+  </div>
+  <!-- ========== END CV TEMPLATE ========== -->
+
 </body>
 </html>
 
