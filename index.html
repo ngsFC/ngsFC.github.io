@@ -1331,12 +1331,10 @@ Instructions:
       'Kelsey G',
       'Cerrato F',
       'Del Bene M',
-      'Matarazzo MR'
-    ];
-
-    // Known affiliations to identify your publications
-    const KNOWN_AFFILIATIONS = [
-      'Santobono Pausilipon'
+      'Matarazzo MR',
+      'Tambaro FP',
+      'Mirabelli P',
+      'Cianflone A'
     ];
 
     // Co-first author papers (marked with * in publications)
@@ -1382,8 +1380,8 @@ Instructions:
         const fetchResponse = await fetch(`${PUBMED_FETCH_URL}?${fetchParams}`);
         const fetchData = await fetchResponse.json();
 
-        // Step 3: Filter publications by co-authors or affiliation
-        // Only show publications where Francesco Cecere works with known collaborators or institutions
+        // Step 3: Filter publications by co-authors
+        // Only show publications where Francesco Cecere works with known collaborators
         const filteredIds = pubmedIds.filter(id => {
           const pub = fetchData.result[id];
           if (!pub || !pub.authors) return false;
@@ -1396,13 +1394,7 @@ Instructions:
             authorNames.some(name => name.includes(coauthor))
           );
 
-          // Check if any known affiliation appears in this publication
-          const affiliation = pub.affiliation || '';
-          const hasKnownAffiliation = KNOWN_AFFILIATIONS.some(aff =>
-            affiliation.includes(aff)
-          );
-
-          if (hasCommonCoauthor || hasKnownAffiliation) {
+          if (hasCommonCoauthor) {
             console.log('✓ Including:', pub.title);
             return true;
           } else {
