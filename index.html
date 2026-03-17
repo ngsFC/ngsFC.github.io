@@ -1334,6 +1334,11 @@ Instructions:
       'Matarazzo MR'
     ];
 
+    // Known affiliations to identify your publications
+    const KNOWN_AFFILIATIONS = [
+      'Santobono Pausilipon'
+    ];
+
     // Co-first author papers (marked with * in publications)
     const CO_FIRST_AUTHOR_PAPERS = [
       '35643636',  // Novel genetic variants of KHDC3L & subcortical maternal complex
@@ -1377,8 +1382,8 @@ Instructions:
         const fetchResponse = await fetch(`${PUBMED_FETCH_URL}?${fetchParams}`);
         const fetchData = await fetchResponse.json();
 
-        // Step 3: Filter publications by co-authors
-        // Only show publications where Francesco Cecere works with known collaborators
+        // Step 3: Filter publications by co-authors or affiliation
+        // Only show publications where Francesco Cecere works with known collaborators or institutions
         const filteredIds = pubmedIds.filter(id => {
           const pub = fetchData.result[id];
           if (!pub || !pub.authors) return false;
@@ -1391,7 +1396,13 @@ Instructions:
             authorNames.some(name => name.includes(coauthor))
           );
 
-          if (hasCommonCoauthor) {
+          // Check if any known affiliation appears in this publication
+          const affiliation = pub.affiliation || '';
+          const hasKnownAffiliation = KNOWN_AFFILIATIONS.some(aff =>
+            affiliation.includes(aff)
+          );
+
+          if (hasCommonCoauthor || hasKnownAffiliation) {
             console.log('✓ Including:', pub.title);
             return true;
           } else {
