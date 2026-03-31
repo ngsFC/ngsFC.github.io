@@ -1235,10 +1235,56 @@ Instructions:
 
   <script>
     // CV Download
-    function downloadCV() {
+    async function buildCVPublications() {
+      if (!cachedPubData) {
+        try {
+          const searchParams = new URLSearchParams({ db: 'pubmed', term: `${AUTHOR_NAME}[Author]`, retmax: 50, retmode: 'json', sort: 'date' });
+          const searchData = await fetch(`${PUBMED_SEARCH_URL}?${searchParams}`).then(r => r.json());
+          const pubmedIds = searchData.esearchresult.idlist;
+          const fetchParams = new URLSearchParams({ db: 'pubmed', id: pubmedIds.join(','), retmode: 'json' });
+          const fetchData = await fetch(`${PUBMED_FETCH_URL}?${fetchParams}`).then(r => r.json());
+          const filteredIds = pubmedIds.filter(id => {
+            const pub = fetchData.result[id];
+            if (!pub || !pub.authors) return false;
+            const authorNames = pub.authors.map(a => a.name);
+            return COMMON_COAUTHORS.some(coauthor => authorNames.some(name => name.includes(coauthor)));
+          });
+          cachedPubData = { result: fetchData.result, filteredIds };
+        } catch (e) {
+          console.error('Could not fetch publications for CV:', e);
+          return;
+        }
+      }
+
+      const { result, filteredIds } = cachedPubData;
+      const container = document.getElementById('cv-publications');
+      const total = filteredIds.length;
+
+      const html = filteredIds.map((id, idx) => {
+        const pub = result[id];
+        if (!pub || !pub.title) return '';
+        const year = pub.pubdate ? pub.pubdate.split(' ')[0] : '';
+        const authors = pub.authors
+          ? pub.authors.map(a => a.name.includes('Cecere') ? `<strong>${a.name}</strong>` : a.name).join(', ')
+          : '';
+        const journal = pub.source || '';
+        const vol = pub.volume ? `, ${pub.volume}` : '';
+        const issue = pub.issue ? `(${pub.issue})` : '';
+        const pages = pub.pages ? `:${pub.pages}` : '';
+        const doiMatch = pub.elocationid ? pub.elocationid.match(/^(10\.\S+)/) : null;
+        const doi = doiMatch ? ` https://doi.org/${doiMatch[1]}` : '';
+        const margin = idx < total - 1 ? '0 0 5px 0' : '0';
+        return `<p style="margin:${margin};"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">${year}</span>${authors}. ${pub.title} <em>${journal}</em>${vol}${issue}${pages}.${doi}</p>`;
+      }).join('');
+
+      if (html) container.innerHTML = html;
+    }
+
+    async function downloadCV() {
       const btn = document.getElementById('downloadBtn');
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
       btn.disabled = true;
+      await buildCVPublications();
       const element = document.getElementById('cv-template');
       element.style.display = 'block';
       const opt = {
@@ -1345,6 +1391,7 @@ Instructions:
 
     const PUBMED_SEARCH_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi';
     const PUBMED_FETCH_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi';
+    let cachedPubData = null;
 
     async function fetchPublications() {
       try {
@@ -1406,6 +1453,7 @@ Instructions:
         console.log('After filtering:', filteredIds.length, 'of', pubmedIds.length, 'publications');
 
         // Step 4: Parse and display publications
+        cachedPubData = { result: fetchData.result, filteredIds };
         displayPublications(fetchData.result, filteredIds);
 
         // Update last updated time
@@ -1778,7 +1826,7 @@ Instructions:
       <!-- PUBLICATIONS -->
       <div style="margin-bottom:16px;">
         <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">PUBLICATIONS</div>
-        <div style="font-size:9.5px; line-height:1.6; color:#333;">
+        <div id="cv-publications" style="font-size:9.5px; line-height:1.6; color:#333;">
           <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>D'Angelo E, Mandrile G, Tesio N, <strong>Cecere F</strong>, et al. Adult-Onset β-Thalassemia Major as Acquired Imprinting Disorder. <em>Am J Hematol</em>, 101(3):633–638. https://doi.org/10.1002/ajh.70177</p>
           <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Givol O, Han IS, <strong>Cecere F</strong>, et al. Missense substitutions in the BTB domain of ZBTB24 can lead to protein instability and cause ICF2 syndrome. <em>Hum Mol Genet</em>, 35(2):ddaf182. https://doi.org/10.1093/hmg/ddaf182</p>
           <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span>D'Angelo E, Pignata L, <strong>Cecere F</strong>, et al. Hypomethylation of the MEG8:Int2-DMR in patients with pathogenic PLAG1 variants. <em>Clin Epigenetics</em>, 18(1):2. https://doi.org/10.1186/s13148-025-02024-6</p>
