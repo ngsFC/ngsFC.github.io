@@ -1312,9 +1312,9 @@ Instructions:
         margin: [12, 0, 12, 0],
         filename: 'Francesco_Cecere_CV.pdf',
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+        html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'] }
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr'] }
       };
       html2pdf().set(opt).from(element).save().then(() => {
         element.style.display = 'none';
@@ -1736,15 +1736,15 @@ Instructions:
     <div style="padding:18px 28px;">
 
       <!-- PROFESSIONAL PROFILE -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">PROFESSIONAL PROFILE</div>
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">PROFESSIONAL PROFILE</div>
         <p style="margin:0; font-size:10px; text-align:justify; color:#333;">I am Francesco Cecere, a Biologist with a deep-rooted interest in Genomics and Bioinformatics. With experience in both rare genetic syndromes (Beckwith-Wiedemann and Silver-Russell syndromes) and pediatric cancer (Wilms tumor), I have developed a strong foundation in translational research. My work primarily focuses on gene regulatory networks, leveraging advanced Bioinformatics techniques to analyze Genomics data. This passion drives my dedication to scientific innovation and my commitment to applying expertise for the advancement of health and science.</p>
       </div>
 
       <!-- WORK EXPERIENCE -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">WORK EXPERIENCE</div>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">WORK EXPERIENCE</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/12/2025 – Present</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Senior Bioinformatic Researcher</div>
@@ -1752,7 +1752,7 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">"Progetto PNC-E3-2022-23683269 Hub Life Science-Terapia Avanzata (HLS-TA)" · Delibera n. 761 del 07/11/2025 · CUP: H63C22000650001</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/11/2025 – 31/01/2026</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Occasional Collaborator</div>
@@ -1760,7 +1760,7 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">PNRR "Digital Driven Diagnostics, prognostics and therapeutics for sustainable Health care" D34 Health – PNC 0000001 · CUP B53C22006100001 · Analisi ed integrazione di dati omici e loro interpretazione.</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">26/08/2024 – 25/08/2025</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Researcher III Level</div>
@@ -1768,7 +1768,7 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">Project: "National Centre for HPC, Big Data and Quantum Computing" · Development and testing of algorithms for the reconstruction of gene regulatory networks from single-cell transcriptomic data. Bando n. 400.5 IGB PNRR.</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">02/2023 – 08/2024</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Postdoc Researcher</div>
@@ -1776,7 +1776,7 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">D.R. n. 1018 · Study of methylation and gene expression profiles of imprinted genes in Wilms tumor · EPIC methylation array, RNA-seq, Exome-seq.</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">05/2023 – 07/2023</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Visiting Postdoc</div>
@@ -1784,7 +1784,7 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">Multi-omic integration of clinical, genetic and epigenetic data from Wilms tumor patients (Dr. Esteller's group) · EPIC array, RNA-seq, Exome-seq.</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">07/2022</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Visiting Student</div>
@@ -1792,7 +1792,7 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">Analysis and multi-omics integration of BS-seq and scRNA-seq data from germ cells · Collaboration with Dr. Kelsey and Dr. Andrews.</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse;">
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/11/2019 – 31/01/2023</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">PhD Student in Molecular Life Sciences (SSD: BIO/18)</div>
@@ -1803,9 +1803,9 @@ Instructions:
       </div>
 
       <!-- EDUCATION -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">EDUCATION AND TRAINING</div>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">EDUCATION AND TRAINING</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/11/2019 – 31/01/2023</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">PhD in Molecular Life Sciences (SSD: BIO/18)</div>
@@ -1813,7 +1813,7 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">Thesis: "Investigating the causes of DNA methylation disturbances in Imprinting Disorders" · Evaluation: Excellent · Defense date: 23/03/2023</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:7px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:7px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2017 – 24/07/2019</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Master's Degree in Molecular Biology</div>
@@ -1821,7 +1821,7 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">Final grade: 110/110 cum laude · Thesis: "Identificazione di nuovi fattori trascrizionali che legano le regioni di controllo dell'imprinting"</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse;">
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2013 – 27/10/2017</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Bachelor's Degree in Biological Sciences</div>
@@ -1832,9 +1832,9 @@ Instructions:
       </div>
 
       <!-- SKILLS -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">SKILLS</div>
-        <table style="width:100%; border-collapse:collapse;">
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">SKILLS</div>
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
           <tr>
             <td style="width:128px; font-weight:bold; font-size:9.5px; color:#444; padding-right:10px; vertical-align:top; padding-bottom:5px;">Bioinformatics</td>
             <td style="font-size:9.5px; color:#333; padding-bottom:5px;">RNA-seq · Exome and WGS · RRBS and BS-seq · Methylation Array · miRNA-seq · Single-cell analysis · SNPs array · Gene Regulatory Network</td>
@@ -1854,8 +1854,8 @@ Instructions:
       <div style="page-break-before:always;"></div>
 
       <!-- PUBLICATIONS -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">PUBLICATIONS</div>
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">PUBLICATIONS</div>
         <div id="cv-publications" style="font-size:9.5px; line-height:1.6; color:#333;">
           <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Giaccari C*, <strong>Cecere F*</strong>, Pagano A, D'Angelo E, Saadat A, Mele L, Salerno P, Merla G, Cerrato F, Riccio A. Loss of maternal PADI6 disrupts DNA methylation and genomic imprinting maintenance in late preimplantation mouse embryos. <em>Epigenetics Chromatin</em>. https://doi.org/10.1186/s13072-026-00674-1 <em>(*co-first author)</em></p>
           <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>D'Angelo E, Mandrile G, Tesio N, <strong>Cecere F</strong>, et al. Adult-Onset β-Thalassemia Major as Acquired Imprinting Disorder. <em>Am J Hematol</em>, 101(3):633–638. https://doi.org/10.1002/ajh.70177</p>
@@ -1885,58 +1885,58 @@ Instructions:
       <div style="page-break-before:always;"></div>
 
       <!-- TEACHING -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">TEACHING</div>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">TEACHING</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">11/05/2026</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Lecturer – PhD Course (41st Cycle): Decoding the Epigenome: DNA methylation and gene regulation</div>
             <div style="font-size:9.5px; color:#444;">DiSTABiF – SB Room · 1.5 hours (11:00–12:30) · AORN Santobono-Pausilipon</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">20/10/2025 – Present</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Contract Professor in Bioinformatics (BIO/18)</div>
             <div style="font-size:9.5px; color:#444;">Prot. N. 162103 del 15/09/2025 – Repertorio DDMF N. 173/2025</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">19/09/2025</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Lecturer – Molecular Biology for Master's students in "Statistical Sciences for Decision Making"</div>
             <div style="font-size:9.5px; color:#444;">Università Federico II, Naples · 4 hours</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">31/03/2025</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Lecturer – PhD Course (40th Cycle): Decoding the Epigenome: DNA Methylation Analysis with NGS &amp; Array</div>
             <div style="font-size:9.5px; color:#444;">Blended · 2 hours (14:30–16:30) · IGB-CNR</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">05/12/2024 – 11/12/2024</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Lecturer – Bioinformatics (Molecular Genetics course, Master's in Biologia)</div>
             <div style="font-size:9.5px; color:#444;">Università degli Studi della Campania "Luigi Vanvitelli", Caserta · Two lectures, 5 hours</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">26/09/2024 – 30/09/2024</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Lecturer – Molecular Biology for Master's students in "Statistical Sciences for Decision Making"</div>
             <div style="font-size:9.5px; color:#444;">Università Federico II, Naples · 4 hours</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2022</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Tutor in Genetics</div>
             <div style="font-size:9.5px; color:#444;">D.D n. 242/2022 prot. n. 81546 del 1/06/22 – CdL Biotecnologie</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse;">
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2022</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Tutor in Genetics for students with disabilities</div>
@@ -1946,30 +1946,30 @@ Instructions:
       </div>
 
       <!-- PROFESSIONAL COURSES -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">PROFESSIONAL COURSES</div>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">PROFESSIONAL COURSES</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">26/09/2023 – 29/09/2023</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">scRNA-seq hands-on course</div>
             <div style="font-size:9.5px; color:#444;">Università degli studi di Torino, Dip. di Biotecnologie e Scienze per la Salute · 24 hours</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/12/2021</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">10x single cell RNA Seq Analysis</div>
             <div style="font-size:9.5px; color:#444;">Babraham Institute, Cambridge, UK · 8 hours</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">06/09/2021 – 17/09/2021</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Data Science: Machine Learning and its Application in Cancer Genomics</div>
             <div style="font-size:9.5px; color:#444;">The Intensive School for Advanced Graduate Studies (ISAGS) · 30 hours</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse;">
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">08/03/2021 – 11/03/2021</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Analisi dei dati NGS ed applicazioni in ambito diagnostico</div>
@@ -1979,16 +1979,16 @@ Instructions:
       </div>
 
       <!-- TALKS -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">TALKS</div>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">TALKS</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">11/06/2025 – 13/06/2025</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">scGraphVerse: A Unified Framework for Network Inference, Evaluation, and Visualization from Single-Cell Gene Expression Data</div>
             <div style="font-size:9.5px; color:#444;">Bioinformatics Italian Society (BITS 2025), Naples</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse;">
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2025</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">scGraphVerse: An R package for Inferring and Integrating Single-Cell Gene Regulatory Networks</div>
@@ -1998,23 +1998,23 @@ Instructions:
       </div>
 
       <!-- WORKSHOPS -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">WORKSHOPS</div>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">WORKSHOPS</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">25/11/2024</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">From raw matrices to differential expression/methylation patterns: a functional genomics approach to detect molecular insights</div>
             <div style="font-size:9.5px; color:#444;">BBCC 2024 · IGB-CNR, Naples · Instructor and Organizer (with Dr. Luca Ambrosino) · 8 hours</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:6px;">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">07/12/2023</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">R frameworks for single cell data analysis</div>
             <div style="font-size:9.5px; color:#444;">BBCC 2023 Tutorial, Naples · Instructor (with Carissimo, Righelli, Policastro) · 6 hours</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse;">
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">16/12/2022 – 25/12/2022</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">NGS - DNA methylation analysis</div>
@@ -2024,8 +2024,8 @@ Instructions:
       </div>
 
       <!-- POSTERS -->
-      <div style="margin-bottom:16px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">POSTER PRESENTATIONS</div>
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">POSTER PRESENTATIONS</div>
         <div style="font-size:9.5px; line-height:1.6; color:#333;">
           <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2025 ·</span> <strong>Cecere F</strong>, et al. Screening for modifiers of genomic imprinting in human blood reveals a role for several genetic and non-genetic factors. <em>Genomic Imprinting – From Biology to Disease</em>, Wellcome Genome Campus, UK, 10–12/03/2025.</p>
           <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2024 ·</span> <strong>Cecere F</strong>, Saadat A, Riccio A, Angelini C. GIMP - A Comprehensive R package for exploring Genomic Imprinting Methylation Patterns in Imprinting Disorders. <em>BBCC 2024</em>, Naples, 27–29/11/2024. 🏆 <strong>Best Poster Award</strong></p>
@@ -2042,11 +2042,11 @@ Instructions:
       </div>
 
       <!-- AWARDS & PACKAGES -->
-      <div style="margin-bottom:16px;">
-        <table style="width:100%; border-collapse:collapse;">
+      <div style="margin-bottom:16px; page-break-inside:avoid;">
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
           <tr>
             <td style="width:49%; vertical-align:top; padding-right:10px;">
-              <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">AWARDS</div>
+              <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">AWARDS</div>
               <div style="border-left:2px solid #327c88; padding-left:10px;">
                 <div style="font-weight:bold; font-size:10.5px;">🏆 BBCC 2024 – Best Poster Presentation</div>
                 <div style="font-size:9.5px; color:#444; margin-top:2px;">GIMP - A Comprehensive R package for exploring Genomic Imprinting Methylation Patterns in Imprinting Disorders</div>
@@ -2054,7 +2054,7 @@ Instructions:
             </td>
             <td style="width:2%;"></td>
             <td style="width:49%; vertical-align:top;">
-              <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">R PACKAGES</div>
+              <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">R PACKAGES</div>
               <div style="border-left:2px solid #327c88; padding-left:10px; font-size:9.5px; color:#333;">
                 <div style="font-weight:bold;">GIMP</div>
                 <div style="color:#444; margin-bottom:4px;">Genomic Imprinting Methylation Patterns · github.com/ngsFC/GIMP</div>
@@ -2067,8 +2067,8 @@ Instructions:
       </div>
 
       <!-- MEMBERSHIPS -->
-      <div style="margin-bottom:10px;">
-        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">NETWORKS AND MEMBERSHIPS</div>
+      <div style="margin-bottom:10px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">NETWORKS AND MEMBERSHIPS</div>
         <div style="border-left:2px solid #327c88; padding-left:10px; font-size:9.5px; color:#333; line-height:1.8;">
           Editorial Board Member – <em>Current Genetic Medicine Reports</em>, Springer Nature, 2026 – Present<br>
           Società Italiana di Genetica Umana (SIGU) – Epigenetics GdL, Oct 2024 – Present<br>
