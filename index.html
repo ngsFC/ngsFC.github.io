@@ -745,9 +745,12 @@ Instructions:
       <!-- Main Title -->
       <h1 class="display-3 fw-bold mb-3">Francesco Cecere</h1>
       <p class="lead mb-4">Biologist & Bioinformatician</p>
-      <div style="margin-top: 1.5rem;">
+      <div style="margin-top: 1.5rem; display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
         <button onclick="downloadCV()" id="downloadBtn" class="btn-social" style="background: var(--accent-color); color: white; border-color: var(--accent-color); cursor: pointer; font-size: 1rem;">
           <i class="fas fa-file-download"></i> Download CV
+        </button>
+        <button onclick="downloadShortCV()" id="downloadShortBtn" class="btn-social" style="background: var(--accent-color); color: white; border-color: var(--accent-color); cursor: pointer; font-size: 1rem;">
+          <i class="fas fa-file-alt"></i> Download Short CV
         </button>
       </div>
 
@@ -1309,7 +1312,7 @@ Instructions:
       const element = document.getElementById('cv-template');
       element.style.display = 'block';
       const opt = {
-        margin: [12, 0, 12, 0],
+        margin: [0, 0, 10, 0],
         filename: 'Francesco_Cecere_CV.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
@@ -1707,6 +1710,27 @@ Instructions:
         fetchPublications();
       }
     };
+
+    async function downloadShortCV() {
+      const btn = document.getElementById('downloadShortBtn');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+      btn.disabled = true;
+      const element = document.getElementById('cv-short-template');
+      element.style.display = 'block';
+      const opt = {
+        margin: [0, 0, 10, 0],
+        filename: 'Francesco_Cecere_ShortCV.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr'] }
+      };
+      html2pdf().set(opt).from(element).save().then(() => {
+        element.style.display = 'none';
+        btn.innerHTML = '<i class="fas fa-file-alt"></i> Download Short CV';
+        btn.disabled = false;
+      });
+    }
   </script>
 
   <!-- ========== CV TEMPLATE FOR PDF DOWNLOAD ========== -->
@@ -1852,9 +1876,10 @@ Instructions:
 
       <!-- PAGE BREAK -->
       <div style="page-break-before:always;"></div>
+      <div style="height:15mm;"></div>
 
       <!-- PUBLICATIONS -->
-      <div style="margin-bottom:16px; page-break-inside:avoid;">
+      <div style="margin-bottom:16px;">
         <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">PUBLICATIONS</div>
         <div id="cv-publications" style="font-size:9.5px; line-height:1.6; color:#333;">
           <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Giaccari C*, <strong>Cecere F*</strong>, Pagano A, D'Angelo E, Saadat A, Mele L, Salerno P, Merla G, Cerrato F, Riccio A. Loss of maternal PADI6 disrupts DNA methylation and genomic imprinting maintenance in late preimplantation mouse embryos. <em>Epigenetics Chromatin</em>. https://doi.org/10.1186/s13072-026-00674-1 <em>(*co-first author)</em></p>
@@ -1883,6 +1908,7 @@ Instructions:
 
       <!-- PAGE BREAK -->
       <div style="page-break-before:always;"></div>
+      <div style="height:15mm;"></div>
 
       <!-- TEACHING -->
       <div style="margin-bottom:16px; page-break-inside:avoid;">
@@ -2024,7 +2050,7 @@ Instructions:
       </div>
 
       <!-- POSTERS -->
-      <div style="margin-bottom:16px; page-break-inside:avoid;">
+      <div style="margin-bottom:16px;">
         <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">POSTER PRESENTATIONS</div>
         <div style="font-size:9.5px; line-height:1.6; color:#333;">
           <p style="margin:0 0 4px 0;"><span style="color:#327c88; font-weight:bold;">2025 ·</span> <strong>Cecere F</strong>, et al. Screening for modifiers of genomic imprinting in human blood reveals a role for several genetic and non-genetic factors. <em>Genomic Imprinting – From Biology to Disease</em>, Wellcome Genome Campus, UK, 10–12/03/2025.</p>
@@ -2085,6 +2111,173 @@ Instructions:
     </div>
   </div>
   <!-- ========== END CV TEMPLATE ========== -->
+
+  <!-- ========== SHORT CV TEMPLATE FOR PDF DOWNLOAD ========== -->
+  <div id="cv-short-template" style="display:none; font-family: Arial, Helvetica, sans-serif; width: 210mm; background: white; color: #2c2c2c; font-size: 10.5px; line-height: 1.5;">
+
+    <!-- HEADER -->
+    <table style="width:100%; background:#327c88; padding:22px 28px 18px 28px; border-collapse:collapse; page-break-inside:avoid;">
+      <tr>
+        <td style="width:95px; vertical-align:middle;">
+          <img src="assets/pics.jpg" width="85" height="85" style="border-radius:50%; border:2px solid rgba(255,255,255,0.85); object-fit:cover; display:block;">
+        </td>
+        <td style="vertical-align:middle; padding-left:18px;">
+          <div style="font-size:24px; font-weight:bold; color:white; margin-bottom:3px;">Francesco Cecere</div>
+          <div style="font-size:12px; color:rgba(255,255,255,0.88); margin-bottom:8px;">Senior Bioinformatic Researcher · Biologist</div>
+          <div style="font-size:9px; color:rgba(255,255,255,0.82);">
+            ✉ francesco.cecerengs@gmail.com &nbsp;|&nbsp; ☎ +39 3888903265 &nbsp;|&nbsp; 📍 Santa Maria Capua Vetere, Italy<br>
+            🔗 linkedin.com/in/francesco-cecere-5b5778199 &nbsp;|&nbsp; github.com/ngsFC &nbsp;|&nbsp; orcid.org/0000-0002-0329-0870
+          </div>
+        </td>
+        <td style="vertical-align:top; text-align:right; padding-right:4px;">
+          <div style="font-size:8.5px; color:rgba(255,255,255,0.7);">Born: 22/09/1995</div>
+          <div style="font-size:8.5px; color:rgba(255,255,255,0.7);">Nationality: Italian</div>
+        </td>
+      </tr>
+    </table>
+
+    <div style="padding:18px 28px;">
+
+      <!-- CURRENT POSITION -->
+      <div style="margin-bottom:14px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">CURRENT POSITION</div>
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">01/12/2025 – Present</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Senior Bioinformatic Researcher</div>
+            <div style="color:#327c88; font-size:9.5px; margin-bottom:2px;">AORN Santobono-Pausilipon, Naples, Italy</div>
+            <div style="font-size:9.5px; color:#444;">PNRR "Hub Life Science-Terapia Avanzata (HLS-TA)" · Set-up of omic and multi-omic analysis pipelines for clinical studies · CUP: H63C22000650001</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- EDUCATION -->
+      <div style="margin-bottom:14px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">EDUCATION</div>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:5px; page-break-inside:avoid;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">2019 – 2023</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">PhD in Molecular Life Sciences (BIO/18) — <em>Excellent</em></div>
+            <div style="color:#327c88; font-size:9.5px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:5px; page-break-inside:avoid;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">2017 – 2019</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Master's Degree in Molecular Biology — <em>110/110 cum laude</em></div>
+            <div style="color:#327c88; font-size:9.5px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">2014 – 2017</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Bachelor's Degree in Biological Sciences — <em>110/110 cum laude</em></div>
+            <div style="color:#327c88; font-size:9.5px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- PUBLICATIONS -->
+      <div style="margin-bottom:14px;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">PUBLICATIONS</div>
+        <div style="font-size:9.5px; line-height:1.65; color:#333;">
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Giaccari C*, <strong>Cecere F*</strong>, Pagano A, D'Angelo E, Saadat A, Mele L, Salerno P, Merla G, Cerrato F, Riccio A. Loss of maternal PADI6 disrupts DNA methylation and genomic imprinting maintenance in late preimplantation mouse embryos. <em>Epigenetics Chromatin</em>. https://doi.org/10.1186/s13072-026-00674-1 <em>(*co-first author)</em></p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>D'Angelo E, Mandrile G, Tesio N, <strong>Cecere F</strong>, et al. Adult-Onset β-Thalassemia Major as Acquired Imprinting Disorder. <em>Am J Hematol</em>, 101(3):633–638. https://doi.org/10.1002/ajh.70177</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Givol O, Han IS, <strong>Cecere F</strong>, et al. Missense substitutions in the BTB domain of ZBTB24 can lead to protein instability and cause ICF2 syndrome. <em>Hum Mol Genet</em>, 35(2):ddaf182. https://doi.org/10.1093/hmg/ddaf182</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span>D'Angelo E, Pignata L, <strong>Cecere F</strong>, et al. Hypomethylation of the MEG8:Int2-DMR in patients with pathogenic PLAG1 variants. <em>Clin Epigenetics</em>, 18(1):2. https://doi.org/10.1186/s13148-025-02024-6</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span><strong>Cecere F</strong>, Pignata L, D'Angelo E, et al. Highly variable genomic methylation in the Beckwith-Wiedemann syndrome associated with multi-locus imprinting disturbances. <em>Clin Epigenetics</em>, 17(1):160. https://doi.org/10.1186/s13148-025-01971-4</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span>Del Bene M, Diana A, Corsello A, <strong>Cecere F</strong>, et al. New generation of paediatricians in the health care system. <em>BMJ Open</em>, 15(7):e097799. https://doi.org/10.1136/bmjopen-2024-097799</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span><strong>Cecere F</strong>, Relator R, Levy M, et al. Identification of genetic and non-genetic modifiers of genomic imprinting. <em>Epigenetics Chromatin</em>, 18(1):47. https://doi.org/10.1186/s13072-025-00612-7</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2025</span>Benedetti C, Giaccari C, <strong>Cecere F</strong>, et al. Single-cell multiomic analysis reveals methylome and transcriptome deviations following oocyte maturation in vitro. <em>Reproduction</em>. https://doi.org/10.1530/REP-25-0011</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2024</span>Giaccari C, <strong>Cecere F</strong>, Argenziano L, et al. New insights into oocyte cytoplasmic lattice-associated proteins. <em>Trends Genet</em>. https://doi.org/10.1016/j.tig.2024.06.002</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2024</span>Lullo V, <strong>Cecere F</strong>, Batti S, et al. A novel iPSC-based model of ICF syndrome subtype 2 recapitulates the molecular phenotype of ZBTB24 deficiency. <em>Front Immunol</em>, 15:1419748.</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2024</span>Cillo F, Coppola E, Habetswallner F, <strong>Cecere F</strong>, et al. Understanding the Variability of 22q11.2 Deletion Syndrome: The Role of Epigenetic Factors. <em>Genes</em>, 15(3):321. https://doi.org/10.3390/genes15030321</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2024</span>Giaccari C, <strong>Cecere F</strong>, et al. A maternal-effect Padi6 variant causes nuclear and cytoplasmic abnormalities in oocytes. <em>Genes Dev</em>, 38(3-4):131–150. https://doi.org/10.1101/gad.351238.123</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2023</span>Verma A, Poondi Krishnan V, <strong>Cecere F</strong>, et al. ICF1-Syndrome-Associated DNMT3B Mutations Prevent De Novo Methylation at a Subset of Imprinted Loci during iPSC Reprogramming. <em>Biomolecules</em>, 13(12):1717. https://doi.org/10.3390/biom13121717</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2023</span>Pignata L, <strong>Cecere F</strong>, Acquaviva F, et al. Co-occurrence of Beckwith-Wiedemann syndrome and pseudohypoparathyroidism type 1B. <em>Front Cell Dev Biol</em>, 11:1237629. https://doi.org/10.3389/fcell.2023.1237629</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2023</span><strong>Cecere F</strong>, Pignata L, Hay Mele B, et al. Co-Occurrence of Beckwith-Wiedemann Syndrome and Early-Onset Colorectal Cancer. <em>Cancers</em>, 15(7):1944. https://doi.org/10.3390/cancers15071944</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2022</span>Pignata L*, <strong>Cecere F*</strong>, Verma A, et al. Novel genetic variants of KHDC3L and other members of the subcortical maternal complex. <em>Clin Epigenetics</em>, 14(1):71. https://doi.org/10.1186/s13148-022-01292-w <em>(*co-first author)</em></p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2022</span>Passaretti F, Pignata L, Vitiello G, <strong>Cecere F</strong>, et al. Different Mechanisms Cause Hypomethylation of Both H19 and KCNQ1OT1. <em>Genes</em>, 13(10):1875. https://doi.org/10.3390/genes13101875</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2022</span>Acurzio B*, <strong>Cecere F*</strong>, Giaccari C, et al. The mismatch-repair proteins MSH2 and MSH6 interact with the imprinting control regions through ZFP57-KAP1. <em>Epigenetics Chromatin</em>, 15(1):27. https://doi.org/10.1186/s13072-022-00462-7 <em>(*co-first author)</em></p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2021</span>Freschi A, Del Prete R, Pignata L, <strong>Cecere F</strong>, et al. The number of CTCF binding sites of the H19/IGF2:IG-DMR correlates with DNA methylation and expression imprinting. <em>Hum Mol Genet</em>. https://doi.org/10.1093/hmg/ddab132</p>
+          <p style="margin:0 0 5px 0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2021</span>Acurzio B, Verma A, Polito A, Giaccari C, <strong>Cecere F</strong>, et al. Zfp57 inactivation illustrates the role of ICR methylation in imprinted gene expression during neural differentiation of mouse ESCs. <em>Sci Rep</em>, 11(1):13802. https://doi.org/10.1038/s41598-021-93297-3</p>
+          <p style="margin:0;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2021</span>Russo R, Russo V, <strong>Cecere F</strong>, et al. ZBTB2 protein is a new partner of the Nucleosome Remodeling and Deacetylase (NuRD) complex. <em>Int J Biol Macromol</em>, 168:67–76. https://doi.org/10.1016/j.ijbiomac.2020.12.029</p>
+        </div>
+      </div>
+
+      <!-- TWO-COLUMN: SKILLS + AWARDS -->
+      <div style="margin-bottom:14px; page-break-inside:avoid;">
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
+          <tr>
+            <td style="width:62%; vertical-align:top; padding-right:12px;">
+              <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">SKILLS</div>
+              <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
+                <tr><td style="font-weight:bold; font-size:9.5px; color:#444; padding-right:8px; vertical-align:top; padding-bottom:4px; white-space:nowrap;">Bioinformatics</td>
+                <td style="font-size:9.5px; color:#333; padding-bottom:4px;">RNA-seq · WGS/Exome · BS-seq · Methylation Array · scRNA-seq · GRN inference</td></tr>
+                <tr><td style="font-weight:bold; font-size:9.5px; color:#444; padding-right:8px; vertical-align:top; padding-bottom:4px; white-space:nowrap;">Programming</td>
+                <td style="font-size:9.5px; color:#333; padding-bottom:4px;">R · Python · Nextflow · Linux/Bash · Shiny</td></tr>
+                <tr><td style="font-weight:bold; font-size:9.5px; color:#444; padding-right:8px; vertical-align:top; white-space:nowrap;">Languages</td>
+                <td style="font-size:9.5px; color:#333;">Italian (native) · English C1</td></tr>
+              </table>
+            </td>
+            <td style="width:38%; vertical-align:top;">
+              <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px;">AWARDS</div>
+              <div style="border-left:2px solid #327c88; padding-left:10px;">
+                <div style="font-weight:bold; font-size:10px;">🏆 BBCC 2024</div>
+                <div style="font-size:9.5px; color:#444; margin-top:2px;">Best Poster Presentation – GIMP R package</div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- R PACKAGES -->
+      <div style="margin-bottom:14px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">R PACKAGES</div>
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
+          <tr>
+            <td style="width:49%; vertical-align:top; padding-right:10px; border-left:2px solid #327c88; padding-left:10px;">
+              <div style="font-weight:bold; font-size:10px;">GIMP</div>
+              <div style="font-size:9.5px; color:#444;">Genomic Imprinting Methylation Patterns · github.com/ngsFC/GIMP</div>
+            </td>
+            <td style="width:49%; vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+              <div style="font-weight:bold; font-size:10px;">scGraphVerse</div>
+              <div style="font-size:9.5px; color:#444;">GRN inference from scRNA-seq · github.com/ngsFC/scGraphVerse · Bioconductor</div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- TEACHING -->
+      <div style="margin-bottom:14px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">TEACHING</div>
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">20/10/2025 – Present</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Contract Professor in Bioinformatics (BIO/18)</div>
+            <div style="color:#327c88; font-size:9.5px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
+          </td></tr>
+        </table>
+      </div>
+
+      <!-- MEMBERSHIPS -->
+      <div style="margin-bottom:14px; page-break-inside:avoid;">
+        <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">MEMBERSHIPS</div>
+        <div style="border-left:2px solid #327c88; padding-left:10px; font-size:9.5px; color:#333; line-height:1.8;">
+          Editorial Board Member – <em>Current Genetic Medicine Reports</em>, Springer Nature, 2026 – Present<br>
+          Società Italiana di Genetica Umana (SIGU) – Epigenetics GdL, Oct 2024 – Present<br>
+          Bioinformatics ITalian Society (BITS), Apr 2025 – Present
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div style="border-top:1px solid #327c88; margin-top:16px; padding-top:8px; text-align:center; font-size:8.5px; color:#999;">
+        Francesco Cecere · Short CV generated from ngsfc.github.io
+      </div>
+
+    </div>
+  </div>
+  <!-- ========== END SHORT CV TEMPLATE ========== -->
 
 </body>
 </html>
