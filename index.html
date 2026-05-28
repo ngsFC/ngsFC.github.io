@@ -1312,7 +1312,7 @@ Instructions:
       const element = document.getElementById('cv-template');
       element.style.display = 'block';
       const opt = {
-        margin: [8, 0, 10, 0],
+        margin: [0, 0, 10, 0],
         filename: 'Francesco_Cecere_CV.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
@@ -1718,7 +1718,7 @@ Instructions:
       const element = document.getElementById('cv-short-template');
       element.style.display = 'block';
       const opt = {
-        margin: [8, 0, 10, 0],
+        margin: [0, 0, 10, 0],
         filename: 'Francesco_Cecere_ShortCV.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
@@ -1876,10 +1876,9 @@ Instructions:
 
       <!-- PAGE BREAK -->
       <div style="page-break-before:always;"></div>
-      <div style="height:15mm;"></div>
 
       <!-- PUBLICATIONS -->
-      <div style="margin-bottom:16px;">
+      <div style="margin-bottom:16px; padding-top:15mm;">
         <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">PUBLICATIONS</div>
         <div id="cv-publications" style="font-size:9.5px; line-height:1.6; color:#333;">
           <p style="margin:0 0 5px 0; page-break-inside:avoid;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Giaccari C*, <strong>Cecere F*</strong>, Pagano A, D'Angelo E, Saadat A, Mele L, Salerno P, Merla G, Cerrato F, Riccio A. Loss of maternal PADI6 disrupts DNA methylation and genomic imprinting maintenance in late preimplantation mouse embryos. <em>Epigenetics Chromatin</em>. https://doi.org/10.1186/s13072-026-00674-1 <em>(*co-first author)</em></p>
@@ -1908,10 +1907,9 @@ Instructions:
 
       <!-- PAGE BREAK -->
       <div style="page-break-before:always;"></div>
-      <div style="height:15mm;"></div>
 
       <!-- TEACHING -->
-      <div style="margin-bottom:16px; page-break-inside:avoid;">
+      <div style="margin-bottom:16px; padding-top:15mm; page-break-inside:avoid;">
         <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">TEACHING</div>
         <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">11/05/2026</td>
@@ -2171,7 +2169,7 @@ Instructions:
       <div style="margin-bottom:14px; page-break-inside:avoid;">
         <div style="background:#327c88; color:white; padding:4px 8px; font-weight:bold; font-size:10px; letter-spacing:0.8px; margin-bottom:8px; border-radius:2px; page-break-after:avoid;">EDUCATION</div>
         <table style="width:100%; border-collapse:collapse; margin-bottom:5px; page-break-inside:avoid;">
-          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">2019 – 2023</td>
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">01/11/2019 – 23/03/2023</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">PhD in Molecular Life Sciences (BIO/18) — <em>Excellent</em></div>
             <div style="color:#327c88; font-size:9.5px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
@@ -2180,14 +2178,14 @@ Instructions:
           </td></tr>
         </table>
         <table style="width:100%; border-collapse:collapse; margin-bottom:5px; page-break-inside:avoid;">
-          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">2017 – 2019</td>
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">2017 – 24/07/2019</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Master's Degree in Molecular Biology — <em>110/110 cum laude</em></div>
             <div style="color:#327c88; font-size:9.5px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
           </td></tr>
         </table>
         <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
-          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">2014 – 2017</td>
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px;">2014 – 27/10/2017</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Bachelor's Degree in Biological Sciences — <em>110/110 cum laude</em></div>
             <div style="color:#327c88; font-size:9.5px;">University of Campania "Luigi Vanvitelli", Caserta, Italy</div>
@@ -2221,6 +2219,7 @@ Instructions:
           <p style="margin:0 0 5px 0; page-break-inside:avoid;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2021</span>Acurzio B, Verma A, Polito A, Giaccari C, <strong>Cecere F</strong>, et al. Zfp57 inactivation illustrates the role of ICR methylation in imprinted gene expression during neural differentiation of mouse ESCs. <em>Sci Rep</em>, 11(1):13802. https://doi.org/10.1038/s41598-021-93297-3</p>
           <p style="margin:0; page-break-inside:avoid;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2021</span>Russo R, Russo V, <strong>Cecere F</strong>, et al. ZBTB2 protein is a new partner of the Nucleosome Remodeling and Deacetylase (NuRD) complex. <em>Int J Biol Macromol</em>, 168:67–76. https://doi.org/10.1016/j.ijbiomac.2020.12.029</p>
         </div>
+        <div style="font-size:8.5px; color:#666; margin-top:6px; font-style:italic;">11 poster presentations and 2 oral communications at national and international conferences.</div>
       </div>
 
       <!-- TWO-COLUMN: SKILLS + AWARDS -->
