@@ -1295,10 +1295,10 @@ Instructions:
         const vol = pub.volume ? `, ${pub.volume}` : '';
         const issue = pub.issue ? `(${pub.issue})` : '';
         const pages = pub.pages ? `:${pub.pages}` : '';
-        const doiMatch = pub.elocationid ? pub.elocationid.match(/^(10\.\S+)/) : null;
+        const doiMatch = pub.elocationid ? pub.elocationid.match(/(10\.\S+)/) : null;
         const doi = doiMatch ? ` https://doi.org/${doiMatch[1]}` : '';
         const margin = idx < total - 1 ? '0 0 5px 0' : '0';
-        return `<p style="margin:${margin};"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">${year}</span>${authors}. ${pub.title} <em>${journal}</em>${vol}${issue}${pages}.${doi}</p>`;
+        return `<p style="margin:${margin}; page-break-inside:avoid;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">${year}</span>${authors}. ${pub.title} <em>${journal}</em>${vol}${issue}${pages}.${doi}</p>`;
       }).join('');
 
       if (html) container.innerHTML = html;
@@ -1312,12 +1312,12 @@ Instructions:
       const element = document.getElementById('cv-template');
       element.style.display = 'block';
       const opt = {
-        margin: [0, 0, 10, 0],
+        margin: [0, 0, 8, 0],
         filename: 'Francesco_Cecere_CV.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
+        image: { type: 'png' },
+        html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr'] }
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr', 'p'] }
       };
       html2pdf().set(opt).from(element).save().then(() => {
         element.style.display = 'none';
@@ -1718,12 +1718,12 @@ Instructions:
       const element = document.getElementById('cv-short-template');
       element.style.display = 'block';
       const opt = {
-        margin: [0, 0, 10, 0],
+        margin: [0, 0, 8, 0],
         filename: 'Francesco_Cecere_ShortCV.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
+        image: { type: 'png' },
+        html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr'] }
+        pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr', 'p'] }
       };
       html2pdf().set(opt).from(element).save().then(() => {
         element.style.display = 'none';
@@ -1746,8 +1746,8 @@ Instructions:
           <div style="font-size:24px; font-weight:bold; color:white; margin-bottom:3px;">Francesco Cecere</div>
           <div style="font-size:12px; color:rgba(255,255,255,0.88); margin-bottom:8px;">Senior Bioinformatic Researcher · Biologist</div>
           <div style="font-size:9px; color:rgba(255,255,255,0.82);">
-            ✉ francesco.cecerengs@gmail.com &nbsp;|&nbsp; ☎ +39 3888903265 &nbsp;|&nbsp; 📍 Santa Maria Capua Vetere, Italy<br>
-            🔗 linkedin.com/in/francesco-cecere-5b5778199 &nbsp;|&nbsp; github.com/ngsFC &nbsp;|&nbsp; x.com/FcecereNGS &nbsp;|&nbsp; orcid.org/0000-0002-0329-0870
+            francesco.cecerengs@gmail.com &nbsp;|&nbsp; +39 3888903265 &nbsp;|&nbsp; Santa Maria Capua Vetere, Italy<br>
+            linkedin.com/in/francesco-cecere-5b5778199 &nbsp;|&nbsp; github.com/ngsFC &nbsp;|&nbsp; x.com/FcecereNGS &nbsp;|&nbsp; orcid.org/0000-0002-0329-0870
           </div>
         </td>
         <td style="vertical-align:top; text-align:right; padding-right:4px;">
@@ -2124,8 +2124,8 @@ Instructions:
           <div style="font-size:24px; font-weight:bold; color:white; margin-bottom:3px;">Francesco Cecere</div>
           <div style="font-size:12px; color:rgba(255,255,255,0.88); margin-bottom:8px;">Senior Bioinformatic Researcher · Biologist</div>
           <div style="font-size:9px; color:rgba(255,255,255,0.82);">
-            ✉ francesco.cecerengs@gmail.com &nbsp;|&nbsp; ☎ +39 3888903265 &nbsp;|&nbsp; 📍 Santa Maria Capua Vetere, Italy<br>
-            🔗 linkedin.com/in/francesco-cecere-5b5778199 &nbsp;|&nbsp; github.com/ngsFC &nbsp;|&nbsp; orcid.org/0000-0002-0329-0870
+            francesco.cecerengs@gmail.com &nbsp;|&nbsp; +39 3888903265 &nbsp;|&nbsp; Santa Maria Capua Vetere, Italy<br>
+            linkedin.com/in/francesco-cecere-5b5778199 &nbsp;|&nbsp; github.com/ngsFC &nbsp;|&nbsp; orcid.org/0000-0002-0329-0870
           </div>
         </td>
         <td style="vertical-align:top; text-align:right; padding-right:4px;">
