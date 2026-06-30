@@ -746,10 +746,10 @@ Instructions:
       <h1 class="display-3 fw-bold mb-3">Francesco Cecere</h1>
       <p class="lead mb-4">Biologist & Bioinformatician</p>
       <div style="margin-top: 1.5rem; display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
-        <button onclick="downloadCV()" id="downloadBtn" class="btn-social" style="background: var(--accent-color); color: white; border-color: var(--accent-color); cursor: pointer; font-size: 1rem;">
+        <button type="button" onclick="downloadCV()" id="downloadBtn" class="btn-social" style="background: var(--accent-color); color: white; border-color: var(--accent-color); cursor: pointer; font-size: 1rem;">
           <i class="fas fa-file-download"></i> Download CV
         </button>
-        <button onclick="downloadShortCV()" id="downloadShortBtn" class="btn-social" style="background: var(--accent-color); color: white; border-color: var(--accent-color); cursor: pointer; font-size: 1rem;">
+        <button type="button" onclick="downloadShortCV()" id="downloadShortBtn" class="btn-social" style="background: var(--accent-color); color: white; border-color: var(--accent-color); cursor: pointer; font-size: 1rem;">
           <i class="fas fa-file-alt"></i> Download Short CV
         </button>
       </div>
@@ -1306,24 +1306,28 @@ Instructions:
 
     async function downloadCV() {
       const btn = document.getElementById('downloadBtn');
+      const element = document.getElementById('cv-template');
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
       btn.disabled = true;
-      await buildCVPublications();
-      const element = document.getElementById('cv-template');
-      element.style.display = 'block';
-      const opt = {
-        margin: [0, 0, 8, 0],
-        filename: 'Francesco_Cecere_CV.pdf',
-        image: { type: 'png' },
-        html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr', 'p'] }
-      };
-      html2pdf().set(opt).from(element).save().then(() => {
+      try {
+        await buildCVPublications();
+        element.style.display = 'block';
+        const opt = {
+          margin: [0, 0, 8, 0],
+          filename: 'Francesco_Cecere_CV.pdf',
+          image: { type: 'png' },
+          html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+          pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr', 'p'] }
+        };
+        await html2pdf().set(opt).from(element).save();
+      } catch (err) {
+        console.error('CV generation failed:', err);
+      } finally {
         element.style.display = 'none';
         btn.innerHTML = '<i class="fas fa-file-download"></i> Download CV';
         btn.disabled = false;
-      });
+      }
     }
 
     // Poster toggle
@@ -1713,23 +1717,27 @@ Instructions:
 
     async function downloadShortCV() {
       const btn = document.getElementById('downloadShortBtn');
+      const element = document.getElementById('cv-short-template');
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
       btn.disabled = true;
-      const element = document.getElementById('cv-short-template');
-      element.style.display = 'block';
-      const opt = {
-        margin: [0, 0, 8, 0],
-        filename: 'Francesco_Cecere_ShortCV.pdf',
-        image: { type: 'png' },
-        html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-        pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr', 'p'] }
-      };
-      html2pdf().set(opt).from(element).save().then(() => {
+      try {
+        element.style.display = 'block';
+        const opt = {
+          margin: [0, 0, 8, 0],
+          filename: 'Francesco_Cecere_ShortCV.pdf',
+          image: { type: 'png' },
+          html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+          pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr', 'p'] }
+        };
+        await html2pdf().set(opt).from(element).save();
+      } catch (err) {
+        console.error('Short CV generation failed:', err);
+      } finally {
         element.style.display = 'none';
         btn.innerHTML = '<i class="fas fa-file-alt"></i> Download Short CV';
         btn.disabled = false;
-      });
+      }
     }
   </script>
 
