@@ -1504,33 +1504,21 @@ Instructions:
       '41998711'   // Loss of maternal PADI6 disrupts DNA methylation and genomic imprinting (Giaccari, Cecere)
     ];
 
-    // DOIs of the peer-reviewed publications, used to fetch live citation counts
-    // from Semantic Scholar (matched by DOI, so results can't be contaminated by
-    // other people sharing the same name).
-    const PUBLICATION_DOIS = [
-      '10.1186/s13072-026-00674-1', '10.1002/ajh.70177', '10.1093/hmg/ddaf182',
-      '10.3389/fonc.2026.1778224', '10.1186/s13148-025-02024-6', '10.1186/s13148-025-01971-4',
-      '10.1136/bmjopen-2024-097799', '10.1186/s13072-025-00612-7', '10.1530/REP-25-0011',
-      '10.1016/j.tig.2024.06.002', '10.3389/fimmu.2024.1419748', '10.3390/genes15030321',
-      '10.1101/gad.351238.123', '10.3390/biom13121717', '10.3389/fcell.2023.1237629',
-      '10.3390/cancers15071944', '10.1186/s13148-022-01292-w', '10.3390/genes13101875',
-      '10.1186/s13072-022-00462-7', '10.1093/hmg/ddab132', '10.1038/s41598-021-93297-3',
-      '10.1016/j.ijbiomac.2020.12.029'
-    ];
-
-    async function fetchCitationMetrics() {
+    // Citation counts / h-index are fetched from Semantic Scholar using the exact
+    // same PMIDs already resolved by the PubMed search+filter above (fetchPublications),
+    // so the stat tiles can never drift out of sync with what the Publications tab shows.
+    async function fetchCitationMetrics(pmids) {
       const statPubEl = document.getElementById('statPubCount');
       const statCiteEl = document.getElementById('statCitations');
       const statHEl = document.getElementById('statHIndex');
 
-      // Publication count is known independently of the network call
-      statPubEl.textContent = PUBLICATION_DOIS.length;
+      statPubEl.textContent = pmids.length;
 
       try {
         const response = await fetch('https://api.semanticscholar.org/graph/v1/paper/batch?fields=citationCount', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ids: PUBLICATION_DOIS.map(doi => `DOI:${doi}`) })
+          body: JSON.stringify({ ids: pmids.map(id => `PMID:${id}`) })
         });
         const papers = await response.json();
         const citationCounts = papers.map(p => (p && p.citationCount) || 0);
@@ -1544,8 +1532,8 @@ Instructions:
         statHEl.textContent = hIndex;
       } catch (e) {
         console.error('Could not fetch live citation metrics from Semantic Scholar:', e);
-        // Fallback to the last known snapshot (same DOI-matched methodology)
-        statCiteEl.textContent = '151';
+        // Fallback to the last known snapshot (same PubMed-filtered publication set)
+        statCiteEl.textContent = '154';
         statHEl.textContent = '8';
       }
     }
@@ -1616,6 +1604,7 @@ Instructions:
         // Step 4: Parse and display publications
         cachedPubData = { result: fetchData.result, filteredIds };
         displayPublications(fetchData.result, filteredIds);
+        fetchCitationMetrics(filteredIds);
 
         // Update last updated time
         const now = new Date();
@@ -1729,8 +1718,7 @@ Instructions:
       originalSwitchTab(tabId);
       if (tabId === 'publications' && !publicationsLoaded) {
         publicationsLoaded = true;
-        fetchPublications();
-        fetchCitationMetrics();
+        fetchPublications(); // also triggers fetchCitationMetrics() once PMIDs are resolved
       }
     };
 
@@ -1924,7 +1912,7 @@ Instructions:
       <div data-cv="short" style="margin-bottom:16px; font-size:9px; color:#666; font-style:italic; text-align:center;">11 poster presentations and 2 oral communications at national and international conferences.</div>
 
       <!-- TEACHING -->
-      <div style="margin-bottom:16px; page-break-before:always; padding-top:6mm;">
+      <div style="margin-bottom:16px;">
         <div class="cv-label">TEACHING</div>
         <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;" data-cv="full">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">11/05/2026</td>
