@@ -58,6 +58,10 @@ Instructions:
       --shadow-sm: 0 5px 15px rgba(0, 0, 0, 0.5);
       --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.6);
       --shadow-lg: 0 15px 35px rgba(0, 0, 0, 0.7);
+      /* Bootstrap 5.3 only swaps this variable under its own [data-bs-theme="dark"]
+         attribute, which this site never sets (it toggles a .dark-mode class instead).
+         Override it here so .text-muted and other secondary-color utilities stay legible. */
+      --bs-secondary-color: rgba(173, 181, 189, 0.75);
     }
 
     body {
@@ -1355,7 +1359,9 @@ Instructions:
 
       const { result, filteredIds } = cachedPubData;
       const container = document.getElementById('cv-publications');
+      const countLabel = document.getElementById('cv-pub-count');
       const total = filteredIds.length;
+      if (countLabel) countLabel.textContent = `(${total} peer-reviewed articles)`;
 
       const html = filteredIds.map((id, idx) => {
         const pub = result[id];
@@ -1882,8 +1888,10 @@ Instructions:
 
       <!-- PUBLICATIONS -->
       <div style="margin-bottom:16px; page-break-before:always; padding-top:6mm;">
-        <div class="cv-label">PUBLICATIONS &nbsp;<span style="font-weight:normal;font-size:8.5px;opacity:0.8;">(22 peer-reviewed articles)</span></div>
+        <div class="cv-label">PUBLICATIONS &nbsp;<span id="cv-pub-count" style="font-weight:normal;font-size:8.5px;opacity:0.8;">(24 peer-reviewed articles)</span></div>
         <div id="cv-publications" style="font-size:9.5px; line-height:1.6; color:#333;">
+          <p style="margin:0 0 5px 0; page-break-inside:avoid;"><span style="color:#aab0b8; font-size:8px; font-weight:bold; margin-right:4px;">[24]</span><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Cianflone A, <strong>Cecere F</strong>, Coppola L, Cacace F, Mirabelli P, Tambaro FP. Azacitidine and decitabine show distinct response patterns in pediatric Myelodysplastic Syndromes and Juvenile Myelomonocytic Leukemia before HSCT: a systematic review and quantitative analysis. <em>Clin Epigenetics</em>. doi:10.1186/s13148-026-02191-0</p>
+          <p style="margin:0 0 5px 0; page-break-inside:avoid;"><span style="color:#aab0b8; font-size:8px; font-weight:bold; margin-right:4px;">[23]</span><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Primo P, <strong>Cecere F</strong>, Cianflone A, Mastrodonato F, Maisto G, Coppola L, et al. PXDN, TCF4 and TSPAN7 Are Differentially Expressed in B-Cell Acute Lymphoblastic Leukaemia: An Integrative Analysis. <em>Genes (Basel)</em>, 17(6). doi:10.3390/genes17060684</p>
           <p style="margin:0 0 5px 0; page-break-inside:avoid;"><span style="color:#aab0b8; font-size:8px; font-weight:bold; margin-right:4px;">[22]</span><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Giaccari C*, <strong>Cecere F*</strong>, Pagano A, D'Angelo E, Saadat A, Mele L, Salerno P, Merla G, Cerrato F, Riccio A. Loss of maternal PADI6 disrupts DNA methylation and genomic imprinting maintenance in late preimplantation mouse embryos. <em>Epigenetics Chromatin</em>. doi:10.1186/s13072-026-00674-1 <em>(*co-first author)</em></p>
           <p style="margin:0 0 5px 0; page-break-inside:avoid;"><span style="color:#aab0b8; font-size:8px; font-weight:bold; margin-right:4px;">[21]</span><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>D'Angelo E, Mandrile G, Tesio N, <strong>Cecere F</strong>, et al. Adult-Onset β-Thalassemia Major as Acquired Imprinting Disorder. <em>Am J Hematol</em>, 101(3):633–638. doi:10.1002/ajh.70177</p>
           <p style="margin:0 0 5px 0; page-break-inside:avoid;"><span style="color:#aab0b8; font-size:8px; font-weight:bold; margin-right:4px;">[20]</span><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">2026</span>Givol O, Han IS, <strong>Cecere F</strong>, et al. Missense substitutions in the BTB domain of ZBTB24 can lead to protein instability and cause ICF2 syndrome. <em>Hum Mol Genet</em>, 35(2):ddaf182. doi:10.1093/hmg/ddaf182</p>
