@@ -1361,7 +1361,17 @@ Instructions:
       const container = document.getElementById('cv-publications');
       const countLabel = document.getElementById('cv-pub-count');
       const total = filteredIds.length;
-      if (countLabel) countLabel.textContent = `(${total} peer-reviewed articles)`;
+
+      // Count first-author and co-first-author papers using the same rule as the
+      // live Publications tab (displayPublications): explicit co-first PMIDs from
+      // CO_FIRST_AUTHOR_PAPERS, plus any paper where Cecere is the first listed author.
+      const firstOrCoFirstCount = filteredIds.filter(id => {
+        const pub = result[id];
+        if (CO_FIRST_AUTHOR_PAPERS.includes(id)) return true;
+        return !!(pub && pub.authors && pub.authors.length > 0 && pub.authors[0].name.includes('Cecere'));
+      }).length;
+
+      if (countLabel) countLabel.textContent = `(${total} peer-reviewed articles, ${firstOrCoFirstCount} as first/co-first author)`;
 
       const html = filteredIds.map((id, idx) => {
         const pub = result[id];
@@ -1375,7 +1385,8 @@ Instructions:
         const issue = pub.issue ? `(${pub.issue})` : '';
         const pages = pub.pages ? `:${pub.pages}` : '';
         const doiMatch = pub.elocationid ? pub.elocationid.match(/(10\.\S+)/) : null;
-        const doi = doiMatch ? ` https://doi.org/${doiMatch[1]}` : '';
+        const doiUrl = doiMatch ? `https://doi.org/${doiMatch[1]}` : '';
+        const doi = doiUrl ? ` <a href="${doiUrl}" style="color:#327c88; text-decoration:none;">${doiUrl}</a>` : '';
         const margin = idx < total - 1 ? '0 0 5px 0' : '0';
         return `<p style="margin:${margin}; page-break-inside:avoid;"><span style="background:#e8f4f6; color:#327c88; padding:1px 5px; border-radius:2px; font-size:8.5px; font-weight:bold; margin-right:5px;">${year}</span>${authors}. ${pub.title} <em>${journal}</em>${vol}${issue}${pages}.${doi}</p>`;
       }).join('');
@@ -1759,8 +1770,8 @@ Instructions:
           <div style="font-size:24px; font-weight:bold; color:white; margin-bottom:3px;">Francesco Cecere</div>
           <div style="font-size:12px; color:rgba(255,255,255,0.88); margin-bottom:8px;">Senior Bioinformatic Researcher · Biologist</div>
           <div style="font-size:9px; color:rgba(255,255,255,0.82);">
-            francesco.cecerengs@gmail.com &nbsp;|&nbsp; +39 3888903265 &nbsp;|&nbsp; Santa Maria Capua Vetere, Italy<br>
-            linkedin.com/in/francesco-cecere-5b5778199 &nbsp;|&nbsp; github.com/ngsFC &nbsp;|&nbsp; orcid.org/0000-0002-0329-0870 &nbsp;|&nbsp; scholar.google.com/citations?user=_iKcucIAAAAJ
+            <a href="mailto:francesco.cecerengs@gmail.com" style="color:inherit; text-decoration:none;">francesco.cecerengs@gmail.com</a> &nbsp;|&nbsp; <a href="tel:+393888903265" style="color:inherit; text-decoration:none;">+39 3888903265</a> &nbsp;|&nbsp; Santa Maria Capua Vetere, Italy<br>
+            <a href="https://linkedin.com/in/francesco-cecere-5b5778199" style="color:inherit; text-decoration:none;">linkedin.com/in/francesco-cecere-5b5778199</a> &nbsp;|&nbsp; <a href="https://github.com/ngsFC" style="color:inherit; text-decoration:none;">github.com/ngsFC</a> &nbsp;|&nbsp; <a href="https://orcid.org/0000-0002-0329-0870" style="color:inherit; text-decoration:none;">orcid.org/0000-0002-0329-0870</a> &nbsp;|&nbsp; <a href="https://scholar.google.com/citations?user=_iKcucIAAAAJ&hl=en" style="color:inherit; text-decoration:none;">scholar.google.com/citations?user=_iKcucIAAAAJ</a>
           </div>
         </td>
         <td style="vertical-align:top; text-align:right; padding-right:4px;">
@@ -2095,9 +2106,9 @@ Instructions:
               <div class="cv-label">R PACKAGES</div>
               <div style="border-left:2px solid #327c88; padding-left:10px; font-size:9.5px; color:#333;">
                 <div style="font-weight:bold;">GIMP</div>
-                <div style="color:#444; margin-bottom:4px;">Genomic Imprinting Methylation Patterns · github.com/ngsFC/GIMP</div>
+                <div style="color:#444; margin-bottom:4px;">Genomic Imprinting Methylation Patterns · <a href="https://github.com/ngsFC/GIMP" style="color:#327c88; text-decoration:none;">github.com/ngsFC/GIMP</a></div>
                 <div style="font-weight:bold;">scGraphVerse</div>
-                <div style="color:#444;">GRN inference from scRNA-seq data · github.com/ngsFC/scGraphVerse · bioconductor.org/packages/release/bioc/html/scGraphVerse.html</div>
+                <div style="color:#444;">GRN inference from scRNA-seq data · <a href="https://github.com/ngsFC/scGraphVerse" style="color:#327c88; text-decoration:none;">github.com/ngsFC/scGraphVerse</a> · <a href="https://bioconductor.org/packages/release/bioc/html/scGraphVerse.html" style="color:#327c88; text-decoration:none;">bioconductor.org/.../scGraphVerse.html</a></div>
               </div>
             </td>
           </tr>
