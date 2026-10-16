@@ -1283,6 +1283,16 @@ Instructions:
           <span class="text-muted">2022</span>
           <p class="mb-0 mt-1">D.D n. 280 del 23/06/22 – CdL Scienze Ambientali</p>
         </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">Internship Supervisor</h5>
+          <span class="text-muted">Università degli Studi di Napoli Federico II</span>
+          <p class="mb-0 mt-1">Student ID P58000366 – Master's Degree in Molecular and Cellular Biology</p>
+        </div>
+        <div class="mb-4">
+          <h5 class="fw-semibold">Co-supervisor (Co-relatore) – Master's Thesis in Genetics</h5>
+          <span class="text-muted">Università degli Studi della Campania "Luigi Vanvitelli"</span>
+          <p class="mb-0 mt-1">Master's Degree in Biology</p>
+        </div>
       </div>
 
       <!-- Award -->
@@ -1408,9 +1418,9 @@ Instructions:
         const opt = {
           margin: [0, 0, 8, 0],
           filename: mode === 'short' ? 'Francesco_Cecere_ShortCV.pdf' : 'Francesco_Cecere_CV.pdf',
-          image: { type: 'png' },
-          html2canvas: { scale: 3, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
-          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+          image: { type: 'jpeg', quality: 0.92 },
+          html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
+          jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
           pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr', 'p'] }
         };
         await html2pdf().set(opt).from(element).save();
@@ -1975,11 +1985,25 @@ Instructions:
             <div style="font-size:9.5px; color:#444;">D.D n. 242/2022 prot. n. 81546 del 1/06/22 – CdL Biotecnologie</div>
           </td></tr>
         </table>
-        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;" data-cv="full">
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;" data-cv="full">
           <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">2022</td>
           <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
             <div style="font-weight:bold; font-size:10.5px;">Tutor in Genetics for students with disabilities</div>
             <div style="font-size:9.5px; color:#444;">D.D n. 280 del 23/06/22 – CdL Scienze Ambientali</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; margin-bottom:6px; page-break-inside:avoid;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">—</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Internship Supervisor</div>
+            <div style="font-size:9.5px; color:#444;">Student ID P58000366 · Master's Degree in Molecular and Cellular Biology · Università degli Studi di Napoli Federico II</div>
+          </td></tr>
+        </table>
+        <table style="width:100%; border-collapse:collapse; page-break-inside:avoid;">
+          <tr><td style="width:128px; vertical-align:top; color:#666; font-size:9px; padding-right:10px; padding-top:1px;">—</td>
+          <td style="vertical-align:top; border-left:2px solid #327c88; padding-left:10px;">
+            <div style="font-weight:bold; font-size:10.5px;">Co-supervisor (Co-relatore) – Master's Thesis in Genetics</div>
+            <div style="font-size:9.5px; color:#444;">Master's Degree in Biology · Università degli Studi della Campania "Luigi Vanvitelli"</div>
           </td></tr>
         </table>
       </div>
