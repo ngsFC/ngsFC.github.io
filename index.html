@@ -25,6 +25,8 @@ Instructions:
   <meta name="twitter:image" content="https://github.com/ngsFC.png">
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- CV font: Arimo is metric-compatible with Arial, so the PDF looks the same on every OS -->
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <!-- Bootswatch Flatly Theme -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/flatly/bootstrap.min.css">
   <!-- Font Awesome Icons -->
@@ -989,6 +991,11 @@ Instructions:
     <div class="container">
       <h2 class="section-title">Publications</h2>
       <p class="text-muted mb-4">Publications are automatically fetched from PubMed. Last updated: <span id="lastUpdated">Loading...</span></p>
+      <div class="mb-4">
+        <button type="button" onclick="downloadPublicationList()" id="downloadPubsBtn" class="btn-social" style="background: var(--accent-color); color: white; border-color: var(--accent-color); cursor: pointer; font-size: 1rem;">
+          <i class="fas fa-file-pdf"></i> Download Publication List
+        </button>
+      </div>
 
       <!-- Citation / Impact Metrics -->
       <div class="stat-tiles" id="citationMetrics">
@@ -1343,28 +1350,35 @@ Instructions:
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <script>
+    // Returns the filtered PubMed data, fetching it only if the page hasn't already.
+    async function loadPubData() {
+      if (!cachedPubData) {
+        const searchParams = new URLSearchParams({ db: 'pubmed', term: `${AUTHOR_NAME}[Author]`, retmax: 50, retmode: 'json', sort: 'date' });
+        const searchData = await fetch(`${PUBMED_SEARCH_URL}?${searchParams}`).then(r => r.json());
+        const pubmedIds = searchData.esearchresult.idlist;
+        const fetchParams = new URLSearchParams({ db: 'pubmed', id: pubmedIds.join(','), retmode: 'json' });
+        const fetchData = await fetch(`${PUBMED_FETCH_URL}?${fetchParams}`).then(r => r.json());
+        const filteredIds = pubmedIds.filter(id => {
+          const pub = fetchData.result[id];
+          if (!pub || !pub.authors) return false;
+          const authorNames = pub.authors.map(a => a.name);
+          return COMMON_COAUTHORS.some(coauthor => authorNames.some(name => name.includes(coauthor)));
+        });
+        cachedPubData = { result: fetchData.result, filteredIds };
+      }
+      return cachedPubData;
+    }
+
     // CV Download
     async function buildCVPublications() {
-      if (!cachedPubData) {
-        try {
-          const searchParams = new URLSearchParams({ db: 'pubmed', term: `${AUTHOR_NAME}[Author]`, retmax: 50, retmode: 'json', sort: 'date' });
-          const searchData = await fetch(`${PUBMED_SEARCH_URL}?${searchParams}`).then(r => r.json());
-          const pubmedIds = searchData.esearchresult.idlist;
-          const fetchParams = new URLSearchParams({ db: 'pubmed', id: pubmedIds.join(','), retmode: 'json' });
-          const fetchData = await fetch(`${PUBMED_FETCH_URL}?${fetchParams}`).then(r => r.json());
-          const filteredIds = pubmedIds.filter(id => {
-            const pub = fetchData.result[id];
-            if (!pub || !pub.authors) return false;
-            const authorNames = pub.authors.map(a => a.name);
-            return COMMON_COAUTHORS.some(coauthor => authorNames.some(name => name.includes(coauthor)));
-          });
-          cachedPubData = { result: fetchData.result, filteredIds };
-        } catch (e) {
-          console.error('Could not fetch publications for CV:', e);
-          return;
-        }
+      try {
+        await loadPubData();
+      } catch (e) {
+        console.error('Could not fetch publications for CV:', e);
+        return;
       }
 
       const { result, filteredIds } = cachedPubData;
@@ -1415,11 +1429,16 @@ Instructions:
       try {
         await buildCVPublications();
         element.style.display = 'block';
+        // The PDF is a screenshot of the template, so make sure the web font is
+        // loaded first; otherwise each OS falls back to its own system font.
+        await Promise.all(['400 10px Arimo', '700 10px Arimo', 'italic 400 10px Arimo']
+          .map(f => document.fonts.load(f)));
+        await document.fonts.ready;
         const opt = {
           margin: [0, 0, 8, 0],
           filename: mode === 'short' ? 'Francesco_Cecere_ShortCV.pdf' : 'Francesco_Cecere_CV.pdf',
           image: { type: 'jpeg', quality: 0.92 },
-          html2canvas: { scale: 2, useCORS: true, letterRendering: true, scrollY: 0, logging: false },
+          html2canvas: { scale: 2, useCORS: true, scrollY: 0, logging: false },
           jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
           pagebreak: { mode: ['css', 'legacy'], avoid: ['table', 'tr', 'p'] }
         };
@@ -1428,6 +1447,116 @@ Instructions:
         console.error('CV generation failed:', err);
       } finally {
         element.style.display = 'none';
+        btn.innerHTML = idleLabel;
+        btn.disabled = false;
+      }
+    }
+
+    // Publication list PDF. Drawn as real text with jsPDF's built-in Helvetica
+    // (not a screenshot), so it is small, searchable and identical on every OS.
+    const PDF_CHAR_MAP = {
+      'α': 'alpha', 'β': 'beta', 'γ': 'gamma', 'δ': 'delta', 'ε': 'epsilon', 'κ': 'kappa',
+      'λ': 'lambda', 'μ': 'mu', 'σ': 'sigma', 'τ': 'tau', 'ω': 'omega',
+      '≥': '>=', '≤': '<=', '−': '-', '‐': '-', '‑': '-', '′': "'", '″': '"',
+      '\u2009': ' ', '\u202F': ' ', '\u200A': ' '
+    };
+
+    // Strips PubMed's inline HTML/entities and replaces characters the standard
+    // PDF fonts can't draw.
+    function toPdfText(str) {
+      const plain = new DOMParser().parseFromString(str || '', 'text/html').body.textContent;
+      return [...plain].map(c => {
+        if (PDF_CHAR_MAP[c] !== undefined) return PDF_CHAR_MAP[c];
+        if (c.charCodeAt(0) <= 0xFF || '–—‘’“”•…€'.includes(c)) return c;
+        return c.normalize('NFKD').replace(/[^\x00-\xFF]/g, '');
+      }).join('').replace(/\s+/g, ' ').trim();
+    }
+
+    async function downloadPublicationList() {
+      const btn = document.getElementById('downloadPubsBtn');
+      const idleLabel = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+      btn.disabled = true;
+
+      try {
+        const { result, filteredIds } = await loadPubData();
+        const pubs = filteredIds.map(id => ({ id, ...result[id] }))
+          .filter(pub => pub.title)
+          .sort((a, b) => (b.sortpubdate || '').localeCompare(a.sortpubdate || ''));
+
+        const doc = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', compress: true });
+        const left = 18, top = 20, bottom = 280, width = 174;
+        const numWidth = 9, fontSize = 9.5, lineH = 4.6;
+
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(14);
+        doc.text('Francesco Cecere Publications', left, top);
+
+        doc.setFontSize(fontSize);
+        let y = top + 10;
+
+        // Writes styled runs word by word, wrapping at the text width. With
+        // draw=false it only measures. Returns the number of lines used.
+        const writeRuns = (runs, x, startY, draw) => {
+          let cx = x, lines = 1, afterSpace = true;
+          runs.forEach(({ text, style = 'normal', url }) => {
+            doc.setFont('helvetica', style);
+            text.split(/( +)/).forEach(word => {
+              if (!word) return;
+              const w = doc.getTextWidth(word);
+              if (/^ +$/.test(word)) { if (cx > x) cx += w; afterSpace = true; return; }
+              // Only wrap at a space, so punctuation stays glued to the word before it.
+              if (afterSpace && cx + w > left + width && cx > x) { cx = x; lines++; }
+              afterSpace = false;
+              const wy = startY + (lines - 1) * lineH;
+              if (draw && url) doc.textWithLink(word, cx, wy, { url });
+              else if (draw) doc.text(word, cx, wy);
+              cx += w;
+            });
+          });
+          return lines;
+        };
+
+        pubs.forEach((pub, idx) => {
+          const runs = buildRuns(pub);
+          // Keep each citation on a single page.
+          const lines = writeRuns(runs, left + numWidth, y, false);
+          if (y + (lines - 1) * lineH > bottom) { doc.addPage(); y = top; }
+
+          doc.setFont('helvetica', 'normal');
+          doc.text(`${idx + 1}.`, left, y);
+
+          y += (writeRuns(runs, left + numWidth, y, true) - 1) * lineH + lineH + 2.4;
+        });
+
+        function buildRuns(pub) {
+          const runs = [];
+          (pub.authors || []).forEach((a, i) => {
+            const sep = i < pub.authors.length - 1 ? ', ' : '. ';
+            runs.push({ text: toPdfText(a.name) });
+            runs.push({ text: sep });
+          });
+          runs.push({ text: toPdfText(pub.title).replace(/\.?$/, '. ') });
+          runs.push({ text: toPdfText(pub.source), style: 'italic' });
+          const year = (pub.pubdate || '').split(' ')[0];
+          const vol = pub.volume ? `;${pub.volume}` : '';
+          const issue = pub.issue ? `(${pub.issue})` : '';
+          const pages = pub.pages ? `:${pub.pages}` : '';
+          runs.push({ text: `. ${year}${vol}${issue}${pages}. ` });
+          const doiMatch = pub.elocationid ? pub.elocationid.match(/(10\.\S+)/) : null;
+          if (doiMatch) {
+            runs.push({ text: `doi:${doiMatch[1]}`, url: `https://doi.org/${doiMatch[1]}` });
+            runs.push({ text: ' ' });
+          }
+          runs.push({ text: `PMID:\u00A0${pub.id}`, url: `https://pubmed.ncbi.nlm.nih.gov/${pub.id}/` });
+          return runs;
+        }
+
+        doc.save('Francesco_Cecere_Publications.pdf');
+      } catch (err) {
+        console.error('Publication list generation failed:', err);
+        alert('Could not generate the publication list. Please try again later.');
+      } finally {
         btn.innerHTML = idleLabel;
         btn.disabled = false;
       }
@@ -1758,7 +1887,7 @@ Instructions:
       page-break-after: avoid;
     }
   </style>
-  <div id="cv-template" style="display:none; font-family: Arial, Helvetica, sans-serif; width: 210mm; background: white; color: #2c2c2c; font-size: 10.5px; line-height: 1.5;">
+  <div id="cv-template" style="display:none; font-family: 'Arimo', Arial, Helvetica, sans-serif; width: 210mm; background: white; color: #2c2c2c; font-size: 10.5px; line-height: 1.5;">
 
     <!-- HEADER -->
     <table style="width:100%; background:#327c88; padding:22px 28px 18px 28px; border-collapse:collapse;">
